@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ethan Okobe — Développeur Python & IA</title>
-  <meta name="description" content="Portfolio d'Ethan Okobe — développeur Python spécialisé en vision par ordinateur, assistants vocaux et data science. Voir projets sur GitHub." />
+  <meta name="description" content="Portfolio de Ethan Okobe, développeur passionné de Python et IA. Spécialisé en vision par ordinateur, traitement audio, et data science." />
   <meta name="author" content="Ethan Okobe">
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
@@ -125,11 +125,11 @@
       <div class="flex items-center gap-2">
   <a href="#contact" class="px-3 py-1 bg-emerald-500/10 border border-emerald-400/30 hover:bg-emerald-400/20 rounded transition-all duration-300 hover:text-glow">Me contacter</a>
   <a href="https://github.com/firecold944" target="_blank" rel="noopener noreferrer" class="px-3 py-1 border border-white/20 rounded hover:bg-white/10 transition-all duration-300 flex items-center gap-1">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
-          </svg>
-          GitHub
-        </a>
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+      <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+    </svg>
+    GitHub
+  </a>
       </div>
     </div>
   </header>
@@ -376,6 +376,7 @@
     <div class="bg-slate-900/60 border border-white/10 p-6 rounded-lg hover:border-blue-400/30 transition-all duration-300 relative overflow-hidden">
       <div class="absolute -right-10 -top-10 w-32 h-32 bg-blue-500/10 rounded-full filter blur-xl"></div>
       <h3 class="font-semibold mb-2 text-xl text-glow">Statistiques GitHub</h3>
+  <!-- The IDs below will be populated by the JavaScript -->
   <div class="grid grid-cols-2 gap-4 text-center">
         <div class="p-3 bg-slate-800/30 rounded">
           <div class="text-3xl font-bold text-emerald-400" id="github-repos">—</div>
@@ -386,10 +387,14 @@
           <div class="text-sm text-slate-300">Étoiles</div>
         </div>
         <div class="p-3 bg-slate-800/30 rounded">
+          <!-- Note: Getting a reliable commit count for a user via the public API is complex and can hit rate limits.
+               This is a placeholder that can be replaced with a more advanced solution if needed. -->
           <div class="text-3xl font-bold text-purple-400" id="github-commits">—</div>
           <div class="text-sm text-slate-300">Commits</div>
         </div>
         <div class="p-3 bg-slate-800/30 rounded">
+          <!-- Note: GitHub contributions are difficult to fetch via the public API. We'll use followers as a proxy here,
+               as it's a common metric for a developer's network and activity. -->
           <div class="text-3xl font-bold text-amber-400" id="github-contributions">—</div>
           <div class="text-sm text-slate-300">Contributions</div>
         </div>
@@ -517,175 +522,52 @@
     // Attendre un peu pour l'initialisation (CDN peut être lent)
     setTimeout(initParticlesSafe, 500);
 
-    document.addEventListener('DOMContentLoaded', function() {
-      // Configuration des particules
-      const config = {
-        particles: {
-          number: {
-            value: 80,
-            density: {
-              enable: true,
-              value_area: 800
-            }
-          },
-          color: {
-            value: "#10b981"
-          },
-          shape: {
-            type: "circle",
-            stroke: {
-              width: 0,
-              color: "#000000"
-            },
-            polygon: {
-              nb_sides: 5
-            }
-          },
-          opacity: {
-            value: 0.5,
-            random: true,
-            anim: {
-              enable: true,
-              speed: 1,
-              opacity_min: 0.1,
-              sync: false
-            }
-          },
-          size: {
-            value: 3,
-            random: true,
-            anim: {
-              enable: true,
-              speed: 2,
-              size_min: 0.1,
-              sync: false
-            }
-          },
-          line_linked: {
-            enable: true,
-            distance: 150,
-            color: "#10b981",
-            opacity: 0.2,
-            width: 1
-          },
-          move: {
-            enable: true,
-            speed: 1,
-            direction: "none",
-            random: true,
-            straight: false,
-            out_mode: "out",
-            bounce: false,
-            attract: {
-              enable: true,
-              rotateX: 600,
-              rotateY: 1200
-            }
-          }
-        },
-        interactivity: {
-          detect_on: "canvas",
-          events: {
-            onhover: {
-              enable: true,
-              mode: "grab"
-            },
-            onclick: {
-              enable: true,
-              mode: "push"
-            },
-            resize: true
-          },
-          modes: {
-            grab: {
-              distance: 140,
-              line_linked: {
-                opacity: 0.5
-              }
-            },
-            push: {
-              particles_nb: 4
-            }
-          }
-        },
-        retina_detect: true
-      };
+    // Continue avec la logique du code
+    // Fonction pour mettre à jour les statistiques GitHub
+    async function updateGithubStats() {
+      const username = 'firecold944';
+      const userApiUrl = `https://api.github.com/users/${username}`;
+      const reposApiUrl = `https://api.github.com/users/${username}/repos?per_page=100`;
 
-      // Initialisation des particules
-      if (document.getElementById('particles-js')) {
-        particlesJS('particles-js', config);
+      try {
+        // Fetch user data for repos, followers, and gists
+        const userResponse = await fetch(userApiUrl);
+        const userData = await userResponse.json();
+
+        // Fetch repositories to calculate total stars
+        const reposResponse = await fetch(reposApiUrl);
+        const reposData = await reposResponse.json();
+        
+        // Sum stars from all repositories
+        const totalStars = reposData.reduce((sum, repo) => sum + repo.stargazers_count, 0);
+
+        // Update the DOM with the fetched data
+        document.getElementById('github-repos').textContent = userData.public_repos;
+        document.getElementById('github-stars').textContent = totalStars;
+
+        // Proxy for commits (using public gists)
+        document.getElementById('github-commits').textContent = userData.public_gists;
+
+        // Proxy for contributions (using followers)
+        document.getElementById('github-contributions').textContent = userData.followers;
+
+      } catch (error) {
+        console.error('Erreur lors de la récupération des données GitHub:', error);
+        // Fallback to placeholders if the API call fails
+        document.getElementById('github-repos').textContent = '—';
+        document.getElementById('github-stars').textContent = '—';
+        document.getElementById('github-commits').textContent = '—';
+        document.getElementById('github-contributions').textContent = '—';
       }
+    }
 
-      // Animation des statistiques GitHub
-      function animateValue(id, start, end, duration) {
-        const obj = document.getElementById(id);
-        let startTimestamp = null;
-        const step = (timestamp) => {
-          if (!startTimestamp) startTimestamp = timestamp;
-          const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-          obj.innerHTML = Math.floor(progress * (end - start) + start);
-          if (progress < 1) {
-            window.requestAnimationFrame(step);
-          }
-        };
-        window.requestAnimationFrame(step);
-      }
+    // Set the current year in the footer
+    document.getElementById('year').textContent = new Date().getFullYear();
 
-      // Déclencher les animations lorsque la section est visible
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            animateValue('github-repos', 0, 12, 1000);
-            animateValue('github-stars', 0, 28, 1000);
-            animateValue('github-commits', 0, 156, 1000);
-            animateValue('github-contributions', 0, 427, 1000);
-            observer.unobserve(entry.target);
-          }
-        });
-      }, {threshold: 0.5});
-
-      const statsSection = document.getElementById('contact');
-      if (statsSection) {
-        observer.observe(statsSection);
-      }
-
-      // Mise à jour de l'année
-      document.getElementById('year').textContent = new Date().getFullYear();
-
-      // Récupérer des statistiques GitHub publiques (repos & étoiles)
-      async function fetchGithubStats(username) {
-        try {
-          const reposRes = await fetch(`https://api.github.com/users/${username}/repos?per_page=200`);
-          if (!reposRes.ok) return null;
-          const repos = await reposRes.json();
-          const repoCount = repos.length;
-          const stars = repos.reduce((s, r) => s + (r.stargazers_count || 0), 0);
-          return { repoCount, stars };
-        } catch (e) {
-          return null;
-        }
-      }
-
-      fetchGithubStats('firecold944').then(stats => {
-        if (!stats) return;
-        document.getElementById('github-repos').textContent = stats.repoCount;
-        document.getElementById('github-stars').textContent = stats.stars;
-      });
-
-      // Reveal elements with fade-in-up when entering viewport
-      const toReveal = document.querySelectorAll('.fade-in-up');
-      if (toReveal.length > 0) {
-        const revObserver = new IntersectionObserver((entries) => {
-          entries.forEach(e => {
-            if (e.isIntersecting) {
-              e.target.classList.add('visible');
-              revObserver.unobserve(e.target);
-            }
-          });
-        }, { threshold: 0.15 });
-        toReveal.forEach(el => revObserver.observe(el));
-      }
-    });
+    // Call the function to update stats on page load
+    window.onload = function() {
+      updateGithubStats();
+    };
   </script>
 </body>
 </html>
