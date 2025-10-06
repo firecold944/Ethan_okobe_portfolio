@@ -112,6 +112,9 @@
 <body class="bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 text-slate-100 font-sans min-h-screen gradient-animation">
 
   <a class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 bg-emerald-600/90 text-white px-3 py-2 rounded" href="#main">Aller au contenu</a>
+  <div style="position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:-2;pointer-events:none;">
+    <div style="width:100vw;height:100vh;background:radial-gradient(circle at 20% 30%,#10b98155 0,#0000 60%),radial-gradient(circle at 80% 70%,#3b82f655 0,#0000 60%);"></div>
+  </div>
 
   <!-- Effet de particules en fond -->
   <div id="particles-js"></div>
@@ -139,7 +142,7 @@
   <section class="mx-auto max-w-6xl px-4 pt-16 pb-8 grid md:grid-cols-2 gap-8 items-center relative">
     <div class="relative z-10">
       <h1 id="main" class="text-3xl md:text-5xl font-bold leading-tight animate__animated animate__fadeInDown text-glow">
-        Ethan Okobe — Développeur Python & IA
+        <span class="animate__animated animate__pulse animate__infinite" style="color:#10b981;">Ethan Okobe</span> — <span class="text-cyan-400">14 ans, 1<sup>ère</sup> D</span> <br>Développeur Python & IA
       </h1>
       <p class="mt-4 text-slate-300 text-lg animate__animated animate__fadeIn animate__delay-1s">
         Je conçois des applications Python axées sur la vision par ordinateur, le traitement audio et les assistants vocaux.
@@ -149,7 +152,8 @@
         <span class="px-2 py-1 rounded bg-emerald-500/15 border border-emerald-400/20 text-emerald-300 hover:bg-emerald-500/25 transition-colors duration-300">Vision par ordinateur</span>
         <span class="px-2 py-1 rounded bg-cyan-500/15 border border-cyan-400/20 text-cyan-300 hover:bg-cyan-500/25 transition-colors duration-300">Traitement audio</span>
         <span class="px-2 py-1 rounded bg-fuchsia-500/15 border border-fuchsia-400/20 text-fuchsia-300 hover:bg-fuchsia-500/25 transition-colors duration-300">Interfaces CTk</span>
-        <span class="px-2 py-1 rounded bg-amber-500/15 border border-amber-400/20 text-amber-300 hover:bg-amber-500/25 transition-colors duration-300">Régression linéaire</span>
+        <span class="px-2 py-1 rounded bg-blue-500/15 border border-blue-400/20 text-blue-300 hover:bg-blue-500/25 transition-colors duration-300">TensorFlow (débutant)</span>
+        <span class="px-2 py-1 rounded bg-red-500/15 border border-red-400/20 text-red-300 hover:bg-red-500/25 transition-colors duration-300">PyTorch (débutant)</span>
       </div>
   <div class="mt-8 flex gap-3 animate__animated animate__fadeIn animate__delay-1s">
         <a href="#projet" class="px-4 py-2 bg-emerald-500 hover:bg-emerald-600 rounded text-white transition-all duration-300 hover:shadow-lg hover:shadow-emerald-500/30 border-glow"> 
@@ -177,8 +181,8 @@
   <section class="mx-auto max-w-6xl px-4 py-8">
     <div class="bg-slate-900/60 border border-white/10 p-6 rounded-lg">
       <h2 class="text-2xl font-semibold mb-3">À propos</h2>
-      <p class="text-slate-300">Actuellement étudiant/auto-apprenant et développeur passionné par les systèmes multimodaux. Je mets l'accent sur des projets pratiques, documentés et réutilisables — retrouvez-les sur mon compte GitHub.</p>
-      <p class="text-slate-300 mt-3">Compétences clés : Python, OpenCV, MediaPipe, traitement audio, CustomTkinter, TensorFlow, manipulation de données avec pandas et NumPy.</p>
+      <p class="text-slate-300">Je m'appelle Ethan Okobe, j'ai 14 ans et je suis en classe de 1<sup>ère</sup> D. Étudiant passionné par les systèmes multimodaux, je réalise des projets pratiques, documentés et réutilisables — retrouvez-les sur mon compte GitHub.</p>
+      <p class="text-slate-300 mt-3">Compétences clés : Python (niveau intermédiaire), OpenCV, MediaPipe, traitement audio, CustomTkinter, manipulation de données avec pandas et NumPy. Je débute sur les frameworks TensorFlow et PyTorch.</p>
     </div>
   </section>
 
@@ -189,11 +193,11 @@
       <div class="skill-card bg-slate-900/60 border border-white/10 p-4 rounded-lg hover:border-emerald-400/30 transition-all duration-300">
         <h3 class="text-base flex items-center gap-2">
           <span class="p-2 bg-emerald-500/10 border border-emerald-400/20 rounded-xl icon-float">🐍</span>
-          Python Avancé
+          Python Intermédiaire
         </h3>
-        <p class="text-sm text-slate-300 mt-2">Maîtrise des concepts avancés (décorateurs, générateurs, context managers), programmation orientée objet et bonnes pratiques PEP8.</p>
+        <p class="text-sm text-slate-300 mt-2">Bonne maîtrise des bases, scripts, automatisation et respect des bonnes pratiques PEP8.</p>
         <div class="mt-3 h-1 w-full bg-slate-700 rounded-full">
-          <div class="h-1 bg-emerald-500 rounded-full" style="width: 85%"></div>
+          <div class="h-1 bg-emerald-500 rounded-full" style="width: 60%"></div>
         </div>
       </div>
       
@@ -359,19 +363,22 @@
       <h3 class="font-semibold mb-2 text-xl text-glow">Discutons de votre projet</h3>
       <p class="text-slate-300 mb-4">Disponible pour collaborations, stages et projets freelance. Envoyez-moi un message ou visitez mon GitHub pour voir mes réalisations.</p>
       <div class="flex flex-wrap gap-3">
-  <a href="mailto:ethanokobe944@gmail.com" class="px-4 py-2 bg-emerald-500 rounded hover:bg-emerald-600 text-white transition-all duration-300 hover:shadow-lg hover:shadow-emerald-500/30 flex items-center gap-2">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-            <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z"/>
-          </svg>
-          Envoyer un email
-        </a>
-  <a href="https://github.com/firecold944" target="_blank" rel="noopener noreferrer" class="px-4 py-2 border border-white/20 rounded hover:bg-white/10 transition-all duration-300 flex items-center gap-2">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
-          </svg>
-          Profil GitHub
-        </a>
-      </div>
+    <a href="mailto:ethanokobe944@gmail.com" class="px-4 py-2 bg-emerald-500 rounded hover:bg-emerald-600 text-white transition-all duration-300 hover:shadow-lg hover:shadow-emerald-500/30 flex items-center gap-2">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+        <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z"/>
+      </svg>
+      Envoyer un email
+    </a>
+    <a href="https://github.com/firecold944" target="_blank" rel="noopener noreferrer" class="px-4 py-2 border border-white/20 rounded hover:bg-white/10 transition-all duration-300 flex items-center gap-2">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+      </svg>
+      Profil GitHub
+    </a>
+    <a href="https://wa.me/0504177049" class="px-4 py-2 bg-green-500 rounded hover:bg-green-600 text-white transition-all duration-300 flex items-center gap-2" target="_blank" rel="noopener noreferrer">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M13.601 2.326A7.956 7.956 0 0 0 8.002 0C3.582 0 .002 3.582.002 8c0 1.409.371 2.782 1.075 3.992L0 16l4.117-1.075A7.96 7.96 0 0 0 8.002 16c4.418 0 7.999-3.582 7.999-8 0-1.409-.371-2.782-1.075-3.992a7.956 7.956 0 0 0-1.325-1.682zm-5.599 12.13c-1.25 0-2.47-.33-3.53-.95l-.25-.15-2.44.64.65-2.38-.16-.25c-.62-1.04-.95-2.25-.95-3.53 0-3.59 2.92-6.5 6.5-6.5 1.73 0 3.36.67 4.59 1.89a6.47 6.47 0 0 1 1.91 4.61c0 3.58-2.92 6.5-6.5 6.5zm3.56-4.98c-.2-.1-1.18-.58-1.36-.65-.18-.07-.31-.1-.44.1-.13.2-.5.65-.61.78-.11.13-.22.15-.41.05-.2-.1-.84-.31-1.6-.99-.59-.52-.99-1.16-1.11-1.36-.12-.2-.01-.31.09-.41.09-.09.2-.24.3-.36.1-.12.13-.21.2-.35.07-.14.04-.27-.02-.37-.07-.1-.44-1.06-.6-1.45-.16-.39-.32-.34-.44-.35-.11-.01-.24-.01-.37-.01-.13 0-.34.05-.52.24-.18.19-.7.68-.7 1.65s.72 1.92.82 2.05c.1.13 1.42 2.17 3.45 2.96.48.21.85.34 1.14.44.48.15.92.13 1.27.08.39-.06 1.18-.48 1.35-.94.17-.46.17-.85.12-.94-.05-.09-.18-.13-.38-.23z"/></svg>
+      WhatsApp (père)
+    </a>
     </div>
     
     <div class="bg-slate-900/60 border border-white/10 p-6 rounded-lg hover:border-blue-400/30 transition-all duration-300 relative overflow-hidden">
