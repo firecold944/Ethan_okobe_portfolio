@@ -1,597 +1,433 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Ethan Okobe — Développeur Python & IA</title>
-  <meta name="description" content="Portfolio de Ethan Okobe, développeur passionné de Python et IA. Spécialisé en vision par ordinateur, traitement audio, et data science." />
-  <meta name="author" content="Ethan Okobe">
+  <meta name="description" content="Portfolio — Ethan Okobe. Développeur Python spécialisé en vision par ordinateur, traitement audio et assistants vocaux." />
+  <meta name="author" content="Ethan Okobe" />
   <meta name="google-site-verification" content="nVilIH4Li-saVnTJxRWIwKo0pJ34IPw8N147HGP4Hsg" />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <script src="https://cdn.tailwindcss.com" defer></script>
+
   <style>
-  /* Effet Matrix amélioré */
-    .matrix-container {
-      position: relative;
-      overflow: hidden;
-      border-radius: 1rem;
-      border: 1px solid rgba(16,185,129,0.2);
-      background-color: rgba(0,0,0,0.6);
-      height: 24rem;
-      box-shadow: 0 0 20px rgba(16,185,129,0.1);
-    }
-    
-    #matrixCanvas {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 0;
-    }
-    
-    /* Effet de particules */
-    #particles-js {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-    }
-    
-    /* Animation des cartes */
-    .skill-card, .project-card {
-      transition: all 0.3s ease;
-      transform-style: preserve-3d;
-    }
-    
-    .skill-card:hover, .project-card:hover {
-      transform: translateY(-5px) scale(1.02);
-      box-shadow: 0 10px 25px rgba(16,185,129,0.2);
-      border-color: rgba(16,185,129,0.4);
-    }
-    
-    /* Effet de dégradé animé */
-    @keyframes gradientBG {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-    
-    .gradient-animation {
-      background: linear-gradient(-45deg, #0f172a, #1e293b, #0f172a, #1e293b);
-      background-size: 400% 400%;
-      animation: gradientBG 15s ease infinite;
-    }
-    
-    /* Effet de texte qui brille */
-    .text-glow {
-      text-shadow: 0 0 8px rgba(16,185,129,0.7);
-    }
-    
-    /* Effet de bordure animée */
-    .border-glow {
-      position: relative;
-    }
-    
-    .border-glow::after {
-      content: '';
-      position: absolute;
-      top: -2px;
-      left: -2px;
-      right: -2px;
-      bottom: -2px;
-      z-index: -1;
-      background: linear-gradient(45deg, #10b981, #3b82f6, #10b981);
-      background-size: 200% 200%;
-      border-radius: inherit;
-      animation: gradientBG 3s ease infinite;
-      opacity: 0.7;
-      filter: blur(5px);
-    }
-    
-    /* Animation des icônes */
-    .icon-float {
-      animation: float 6s ease-in-out infinite;
-    }
-    
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
-    }
-    /* Respect prefers-reduced-motion */
-    @media (prefers-reduced-motion: reduce) {
-      .icon-float, .animate__animated { animation: none !important; }
-      .skill-card, .project-card { transition: none !important; }
+    :root{
+      --bg-900:#041022;
+      --bg-800:#07142a;
+      --muted:#9aa8bb;
+      --accent-1:#06b6d4; /* cyan */
+      --accent-2:#10b981; /* emerald */
+      --glass: rgba(255,255,255,0.04);
     }
 
-    /* Simple fade-in utility */
-    .fade-in-up { transform: translateY(8px); opacity: 0; transition: all 0.5s ease; }
-    .fade-in-up.visible { transform: translateY(0); opacity: 1; }
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      background: radial-gradient(1200px 500px at 8% 18%, rgba(6,182,212,0.04), transparent 20%),
+                  radial-gradient(900px 400px at 92% 82%, rgba(16,185,129,0.035), transparent 18%),
+                  linear-gradient(180deg,var(--bg-900),var(--bg-800));
+      color: #E6EEF6;
+      line-height:1.5;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    /* Header */
+    header.site-header{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(6px);
+      background: linear-gradient(180deg, rgba(4,18,34,0.6), rgba(4,18,34,0.28));
+      border-bottom: 1px solid rgba(255,255,255,0.03);
+    }
+    .logo-mark{ width:44px; height:44px; display:inline-grid; place-items:center; border-radius:10px; background:linear-gradient(135deg,var(--bg-900),#05243a); box-shadow: 0 8px 20px rgba(2,6,23,0.6); }
+
+    /* Main layout */
+    main{ max-width:1100px; margin:0 auto; padding:2.5rem 1rem; }
+
+    /* Hero */
+    .hero-title{ font-weight:800; letter-spacing:-0.01em; color: #E8FFF7; }
+    .hero-lead{ color:var(--muted); max-width:58ch; font-size:1.05rem; }
+
+    /* Cards */
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border: 1px solid var(--glass);
+      border-radius: 14px;
+      box-shadow: 0 8px 26px rgba(2,6,23,0.55);
+      transition: transform .28s cubic-bezier(.2,.9,.2,1), box-shadow .28s, border-color .28s;
+    }
+    .card:hover, .card:focus-within{
+      transform: translateY(-8px);
+      box-shadow: 0 22px 48px rgba(2,6,23,0.6), 0 0 30px rgba(6,182,212,0.06);
+      border-color: rgba(6,182,212,0.12);
+    }
+
+    /* Pills */
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:.32rem .6rem; border-radius:999px; font-weight:600; font-size:.82rem;
+      background: rgba(255,255,255,0.02); color:var(--muted); border:1px solid rgba(255,255,255,0.02);
+    }
+
+    /* CTA */
+    .btn-primary{
+      display:inline-flex; align-items:center; gap:.6rem;
+      background: linear-gradient(90deg,var(--accent-2),var(--accent-1));
+      color:#03151a; font-weight:700; padding:.6rem 1rem; border-radius:10px;
+      box-shadow: 0 12px 30px rgba(16,185,129,0.12);
+      border: none; cursor:pointer;
+    }
+    .btn-primary:focus{ outline:3px solid rgba(16,185,129,0.12); outline-offset:3px; }
+    .btn-ghost{
+      background:transparent; color:var(--muted); border:1px solid rgba(255,255,255,0.04); padding:.55rem .9rem; border-radius:10px;
+    }
+
+    /* Matrix canvas container */
+    .matrix-container{
+      position:relative; overflow:hidden; border-radius:12px; min-height:220px; padding:0;
+      background: linear-gradient(180deg, rgba(2,6,23,0.45), rgba(2,6,23,0.22));
+      border:1px solid rgba(255,255,255,0.02);
+    }
+    #matrixCanvas{ width:100%; height:100%; display:block; }
+
+    /* Accessibility & reduced motion */
+    @media (prefers-reduced-motion: reduce){
+      *{ transition:none!important; animation:none!important; }
+    }
+
+    /* Utility tweaks */
+    .muted { color: var(--muted); }
+    .kicker { font-weight:700; color:var(--accent-2); font-size:.95rem; }
+    footer{ color:var(--muted); font-size:.92rem; padding:2rem 0; text-align:center; }
+
+    @media (max-width:640px){
+      .hero-title{ font-size:1.8rem; }
+      main{ padding:1.2rem; }
+    }
   </style>
 </head>
-<body class="bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 text-slate-100 font-sans min-h-screen gradient-animation">
+<body>
+  <a class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-[rgba(6,182,212,0.12)] text-white px-3 py-2 rounded" href="#main">Aller au contenu</a>
 
-  <a class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 bg-emerald-600/90 text-white px-3 py-2 rounded" href="#main">Aller au contenu</a>
-  <div style="position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:-2;pointer-events:none;">
-    <div style="width:100vw;height:100vh;background:radial-gradient(circle at 20% 30%,#10b98155 0,#0000 60%),radial-gradient(circle at 80% 70%,#3b82f655 0,#0000 60%);"></div>
-  </div>
+  <header class="site-header">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+      <a href="#main" class="flex items-center gap-3" aria-label="Accueil - Ethan Okobe">
+        <div class="logo-mark" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+            <rect x="1.5" y="1.5" width="21" height="21" rx="5" stroke="rgba(255,255,255,0.03)" stroke-width="1.5" fill="transparent"/>
+            <path d="M6 15.5L10.5 10L18 16" stroke="url(#grad)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            <defs><linearGradient id="grad" x1="0" x2="1"><stop offset="0" stop-color="#06b6d4"/><stop offset="1" stop-color="#10b981"/></linearGradient></defs>
+          </svg>
+        </div>
+        <div>
+          <div class="kicker">Ethan Okobe</div>
+          <div class="muted" style="font-size:.85rem">Développeur Python · Vision & Audio</div>
+        </div>
+      </a>
 
-  <!-- Effet de particules en fond -->
-  <div id="particles-js"></div>
-
-  <!-- NAV -->
-  <header class="sticky top-0 z-50 backdrop-blur bg-slate-950/60 border-b border-white/10">
-    <div class="mx-auto max-w-6xl px-4 py-3 flex items-center justify-between">
-      <div class="flex items-center gap-2">
-        <span class="text-emerald-400 animate-pulse">✨</span>
-        <span class="font-semibold tracking-wide text-glow">Ethan · Ingénierie Informatique</span>
-      </div>
-      <div class="flex items-center gap-2">
-  <a href="#contact" class="px-3 py-1 bg-emerald-500/10 border border-emerald-400/30 hover:bg-emerald-400/20 rounded transition-all duration-300 hover:text-glow">Me contacter</a>
-  <a href="https://github.com/firecold944" target="_blank" rel="noopener noreferrer" class="px-3 py-1 border border-white/20 rounded hover:bg-white/10 transition-all duration-300 flex items-center gap-1">
-    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-      <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
-    </svg>
-    GitHub
-  </a>
-      </div>
+      <nav aria-label="navigation principale" class="flex items-center gap-3">
+        <a class="btn-ghost" href="#projet">Projets</a>
+        <a class="btn-ghost" href="#skills">Compétences</a>
+        <a class="btn-ghost" href="#contact">Contact</a>
+        <a class="btn-primary" href="https://github.com/firecold944" target="_blank" rel="noopener noreferrer">GitHub</a>
+      </nav>
     </div>
   </header>
 
-  <!-- HERO -->
-  <section class="mx-auto max-w-6xl px-4 pt-16 pb-8 grid md:grid-cols-2 gap-8 items-center relative">
-    <div class="relative z-10">
-      <h1 id="main" class="text-3xl md:text-5xl font-bold leading-tight animate__animated animate__fadeInDown text-glow">
-        <span class="animate__animated animate__pulse animate__infinite" style="color:#10b981;">Ethan Okobe</span> — <span class="text-cyan-400">14 ans, 1<sup>ère</sup> D</span> <br>Développeur Python & IA
-      </h1>
-      <p class="mt-4 text-slate-300 text-lg animate__animated animate__fadeIn animate__delay-1s">
-        Je conçois des applications Python axées sur la vision par ordinateur, le traitement audio et les assistants vocaux.
-        J'interviens sur l'automatisation, les interfaces desktop modernes et les systèmes temps réel avec OpenCV, MediaPipe et bibliothèques d'IA.
-      </p>
-      <div class="mt-6">
-        <div class="relative group max-w-lg mx-auto">
-          <video controls width="100%" style="border-radius:1.5rem;box-shadow:0 0 40px #10b98199,0 0 0 6px #fff2;outline:none;transition:box-shadow 0.3s;" poster="https://img.youtube.com/vi/2vjPBrBU-TM/maxresdefault.jpg" class="hover:scale-105 duration-300">
-            <source src="ScreenRec_250911_43988.mp4" type="video/mp4">
-            Votre navigateur ne supporte pas la vidéo HTML5.
-          </video>
-          <div class="absolute bottom-2 right-2 bg-emerald-600/80 text-white text-xs px-3 py-1 rounded-full shadow-lg animate__animated animate__fadeInUp animate__delay-1s group-hover:scale-110 duration-300">
-            🎬 Démo vidéo — Clique pour voir !
+  <main id="main" role="main" class="mx-auto">
+    <!-- HERO -->
+    <section class="grid lg:grid-cols-2 gap-8 items-center" aria-labelledby="hero-title">
+      <div>
+        <p class="kicker">Bonjour — je suis Ethan</p>
+        <h1 id="hero-title" class="hero-title text-4xl md:text-5xl leading-tight">Développeur Python & Intelligence Artificielle</h1>
+        <p class="hero-lead mt-4">Je conçois des solutions pratiques en vision par ordinateur, traitement audio et assistants vocaux. Mes projets privilégient robustesse, ergonomie et prototypes fonctionnels intégrés avec OpenCV, MediaPipe et bibliothèques audio.</p>
+
+        <div class="mt-6 flex flex-wrap gap-3">
+          <span class="pill">Vision par ordinateur</span>
+          <span class="pill">Traitement audio</span>
+          <span class="pill">CustomTkinter</span>
+          <span class="pill">TensorFlow (début)</span>
+        </div>
+
+        <div class="mt-6 flex gap-3">
+          <a class="btn-primary" href="#projet" aria-label="Voir le projet phare">Voir le projet phare</a>
+          <a class="btn-ghost" href="#contact" aria-label="Me contacter">Me contacter</a>
+        </div>
+
+        <dl class="mt-6 grid grid-cols-3 gap-4 text-sm">
+          <div>
+            <dt class="muted">Âge</dt>
+            <dd class="font-semibold">14 ans</dd>
           </div>
-          <div class="absolute top-2 left-2 bg-black/60 text-emerald-300 text-xs px-2 py-1 rounded shadow animate__animated animate__fadeIn animate__delay-2s">
-            Portfolio Ethan Okobe
+          <div>
+            <dt class="muted">Langage principal</dt>
+            <dd class="font-semibold">Python</dd>
+          </div>
+          <div>
+            <dt class="muted">Outils</dt>
+            <dd class="font-semibold">OpenCV · MediaPipe</dd>
+          </div>
+        </dl>
+      </div>
+
+      <div class="space-y-4">
+        <div class="card matrix-container" role="img" aria-label="Animation Matrix mettant en avant Python et bibliothèques">
+          <canvas id="matrixCanvas" aria-hidden="true"></canvas>
+          <div class="absolute inset-x-4 bottom-4 text-xs font-mono muted"> $ python assistant.py —speech —opencv —mediapipe —ai </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <a class="card p-3 flex items-center gap-3" href="ScreenRec_250911_43988.mp4" aria-label="Ouvrir la démo vidéo">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none"><rect width="24" height="24" rx="6" fill="#051426" /><path d="M9 8l6 4-6 4V8z" fill="#06b6d4"/></svg>
+            <div>
+              <div class="font-semibold">Démo vidéo</div>
+              <div class="muted text-xs">Cliquez pour lire</div>
+            </div>
+          </a>
+
+          <a class="card p-3 flex items-center gap-3" href="https://github.com/firecold944" target="_blank" rel="noopener noreferrer" aria-label="Voir le profil GitHub">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none"><rect width="24" height="24" rx="6" fill="#051426" /><path d="M12 2v6" stroke="#10b981" stroke-width="1.6" stroke-linecap="round"/></svg>
+            <div>
+              <div class="font-semibold">GitHub</div>
+              <div class="muted text-xs">Projets & contributions</div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="mt-12" aria-labelledby="about-title">
+      <div class="flex gap-6 items-start">
+        <h2 id="about-title" class="text-2xl font-semibold">À propos</h2>
+        <div class="card p-6">
+          <p class="font-semibold">Ethan Okobe Kemuel — passionné par l'IA et la robotique.</p>
+          <p class="muted mt-3">J'ai commencé à coder à 13 ans. À 14 ans je me suis spécialisé en Python, puis en vision par ordinateur et traitement audio. J'apprends par la pratique : prototype, test, itération.</p>
+          <p class="muted mt-3">Je collabore sur des projets éducatifs et techniques. Retrouve mes réalisations sur GitHub — disponible pour collaborations sérieuses.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="mt-12" aria-labelledby="skills-title">
+      <h2 id="skills-title" class="text-2xl font-semibold mb-4">Compétences principales</h2>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <!-- skill -->
+        <article class="card p-4" aria-labelledby="skill-python">
+          <h3 id="skill-python" class="font-semibold">🐍 Python — Intermédiaire</h3>
+          <p class="muted text-sm mt-2">Scripts, automatisation, structure de projet, bonnes pratiques PEP8.</p>
+          <div class="mt-3 h-2 w-full bg-[rgba(255,255,255,0.02)] rounded"><div class="h-2 rounded" style="width:60%;background:linear-gradient(90deg,var(--accent-2),var(--accent-1));"></div></div>
+        </article>
+
+        <article class="card p-4" aria-labelledby="skill-opencv">
+          <h3 id="skill-opencv" class="font-semibold">📷 OpenCV</h3>
+          <p class="muted text-sm mt-2">Traitement d'images, détection et pipelines temps réel.</p>
+          <div class="mt-3 h-2 w-full bg-[rgba(255,255,255,0.02)] rounded"><div class="h-2 rounded" style="width:75%;background:#06b6d4;"></div></div>
+        </article>
+
+        <article class="card p-4" aria-labelledby="skill-mediapipe">
+          <h3 id="skill-mediapipe" class="font-semibold">🕹 MediaPipe</h3>
+          <p class="muted text-sm mt-2">Détection de pose/main/visage et applications interactives.</p>
+          <div class="mt-3 h-2 w-full bg-[rgba(255,255,255,0.02)] rounded"><div class="h-2 rounded" style="width:70%;background:#d946ef;"></div></div>
+        </article>
+
+        <article class="card p-4" aria-labelledby="skill-audio">
+          <h3 id="skill-audio" class="font-semibold">🗣 Traitement audio</h3>
+          <p class="muted text-sm mt-2">SpeechRecognition, gTTS, pré-traitement audio et assistants vocaux.</p>
+          <div class="mt-3 h-2 w-full bg-[rgba(255,255,255,0.02)] rounded"><div class="h-2 rounded" style="width:80%;background:#f59e0b;"></div></div>
+        </article>
+
+        <article class="card p-4" aria-labelledby="skill-ds">
+          <h3 id="skill-ds" class="font-semibold">📊 Data Science</h3>
+          <p class="muted text-sm mt-2">pandas, NumPy, visualisations et exploration de données.</p>
+          <div class="mt-3 h-2 w-full bg-[rgba(255,255,255,0.02)] rounded"><div class="h-2 rounded" style="width:65%;background:#8b5cf6;"></div></div>
+        </article>
+
+        <article class="card p-4" aria-labelledby="skill-ctk">
+          <h3 id="skill-ctk" class="font-semibold">🖼️ CustomTkinter</h3>
+          <p class="muted text-sm mt-2">Interfaces desktop modernes et ergonomiques.</p>
+          <div class="mt-3 h-2 w-full bg-[rgba(255,255,255,0.02)] rounded"><div class="h-2 rounded" style="width:75%;background:#3b82f6;"></div></div>
+        </article>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projet" class="mt-12" aria-labelledby="projects-title">
+      <h2 id="projects-title" class="text-2xl font-semibold mb-4">Projets phares</h2>
+      <div class="grid gap-4">
+        <article class="card p-6" aria-labelledby="proj-voice">
+          <h3 id="proj-voice" class="text-lg font-semibold flex items-center gap-3">🎤 Assistant Vocal IA (Desktop)</h3>
+          <p class="muted mt-2">Assistant vocal en Python intégrant reconnaissance vocale, synthèse (gTTS) et UI CustomTkinter.</p>
+          <div class="mt-4 flex flex-wrap gap-2">
+            <span class="pill">Python</span><span class="pill">SpeechRecognition</span><span class="pill">gTTS</span><span class="pill">CustomTkinter</span>
+          </div>
+          <div class="mt-4 flex gap-3">
+            <a class="btn-primary" href="https://github.com/firecold944/project-controle-vocal" target="_blank" rel="noopener">Voir le repo</a>
+            <a class="btn-ghost" href="https://github.com/firecold944/project-controle-vocal#readme" target="_blank" rel="noopener">Documentation</a>
+          </div>
+        </article>
+
+        <article class="card p-6" aria-labelledby="proj-gtts">
+          <h3 id="proj-gtts" class="text-lg font-semibold flex items-center gap-3">🎤 Assistant gTTS (Simplifié)</h3>
+          <p class="muted mt-2">Prototype léger d'assistant vocal pour démonstration et apprentissage.</p>
+          <div class="mt-4 flex gap-3">
+            <a class="btn-primary" href="https://github.com/firecold944/assistant-vocal-gTTs/tree/main" target="_blank" rel="noopener">Voir le repo</a>
+            <a class="btn-ghost" href="https://github.com/firecold944/assistant-vocal-gTTs/tree/main#readme" target="_blank" rel="noopener">Documentation</a>
+          </div>
+        </article>
+
+        <article class="card p-6" aria-labelledby="proj-hand">
+          <h3 id="proj-hand" class="text-lg font-semibold flex items-center gap-3">✍️ Handwriting Recognition</h3>
+          <p class="muted mt-2">Modèle de reconnaissance d’écriture manuscrite avec pré-traitement OpenCV et pipeline d'entraînement.</p>
+          <div class="mt-4 flex gap-3">
+            <a class="btn-primary" href="https://github.com/firecold944/handswritting_model" target="_blank" rel="noopener">Voir le repo</a>
+            <a class="btn-ghost" href="https://github.com/firecold944/handswritting_model#readme" target="_blank" rel="noopener">Documentation</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="mt-12 grid lg:grid-cols-2 gap-6" aria-labelledby="contact-title">
+      <div class="card p-6">
+        <h3 id="contact-title" class="text-lg font-semibold">Discutons de votre projet</h3>
+        <p class="muted mt-2">Disponible pour collaborations et projets éducatifs. Contact par email ou via GitHub.</p>
+        <div class="mt-4 flex gap-3">
+          <a class="btn-primary" href="mailto:ethanokobe944@gmail.com">Envoyer un email</a>
+          <a class="btn-ghost" href="https://wa.me/0504177049" target="_blank" rel="noopener">WhatsApp</a>
+        </div>
+      </div>
+
+      <div class="card p-6" aria-labelledby="github-stats">
+        <h3 id="github-stats" class="text-lg font-semibold">Statistiques GitHub</h3>
+        <div class="grid grid-cols-2 gap-4 mt-4 text-center">
+          <div class="p-3 bg-[rgba(255,255,255,0.02)] rounded">
+            <div id="github-repos" class="text-2xl font-bold text-[var(--accent-2)]">—</div>
+            <div class="muted text-xs">Dépôts</div>
+          </div>
+          <div class="p-3 bg-[rgba(255,255,255,0.02)] rounded">
+            <div id="github-stars" class="text-2xl font-bold text-[var(--accent-1)]">—</div>
+            <div class="muted text-xs">Étoiles</div>
+          </div>
+          <div class="p-3 bg-[rgba(255,255,255,0.02)] rounded">
+            <div id="github-commits" class="text-2xl font-bold text-[#a78bfa]">—</div>
+            <div class="muted text-xs">Gists (proxy)</div>
+          </div>
+          <div class="p-3 bg-[rgba(255,255,255,0.02)] rounded">
+            <div id="github-contributions" class="text-2xl font-bold text-[#f59e0b]">—</div>
+            <div class="muted text-xs">Followers</div>
           </div>
         </div>
       </div>
-  <div class="mt-6 flex flex-wrap gap-3 animate__animated animate__fadeIn animate__delay-1s">
-        <span class="px-2 py-1 rounded bg-emerald-500/15 border border-emerald-400/20 text-emerald-300 hover:bg-emerald-500/25 transition-colors duration-300">Vision par ordinateur</span>
-        <span class="px-2 py-1 rounded bg-cyan-500/15 border border-cyan-400/20 text-cyan-300 hover:bg-cyan-500/25 transition-colors duration-300">Traitement audio</span>
-        <span class="px-2 py-1 rounded bg-fuchsia-500/15 border border-fuchsia-400/20 text-fuchsia-300 hover:bg-fuchsia-500/25 transition-colors duration-300">Interfaces CTk</span>
-        <span class="px-2 py-1 rounded bg-blue-500/15 border border-blue-400/20 text-blue-300 hover:bg-blue-500/25 transition-colors duration-300">TensorFlow (débutant)</span>
-        <span class="px-2 py-1 rounded bg-red-500/15 border border-red-400/20 text-red-300 hover:bg-red-500/25 transition-colors duration-300">PyTorch (débutant)</span>
-      </div>
-  <div class="mt-8 flex gap-3 animate__animated animate__fadeIn animate__delay-1s">
-        <a href="#projet" class="px-4 py-2 bg-emerald-500 hover:bg-emerald-600 rounded text-white transition-all duration-300 hover:shadow-lg hover:shadow-emerald-500/30 border-glow"> 
-          Voir le projet phare
-        </a>
-        <a href="#skills" class="px-4 py-2 border border-white/20 rounded hover:bg-white/10 transition-all duration-300">
-          Compétences
-        </a>
-      </div>
-    </div>
-    
-    <!-- Matrix-style visual amélioré -->
-    <div class="matrix-container border-glow">
-      <canvas id="matrixCanvas"></canvas>
-      <div class="absolute bottom-4 left-4 right-4 text-emerald-300/90 text-xs font-mono animate-pulse">
-        $ python assistant.py —speech —opencv —mediapipe —ai
-      </div>
-      <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-        <div class="text-emerald-400 text-4xl font-bold opacity-20">PYTHON</div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ABOUT -->
-  <section class="mx-auto max-w-6xl px-4 py-8">
-    <div class="bg-slate-900/60 border border-white/10 p-6 rounded-lg">
-      <h2 class="text-2xl font-semibold mb-3">À propos</h2>
-      <p class="text-slate-300"><strong>Ethan Okobe Kemuel</strong> — passionné d'intelligence artificielle, de robotique et de développement logiciel. Issu d'une famille ancrée dans la technologie (mon père est informaticien spécialisé en bases de données et mon frère suit un Bachelor en Computer Science and Engineering), j'ai très tôt souhaité comprendre et créer dans le monde numérique.</p>
-      <p class="text-slate-300 mt-3">J'ai commencé à coder à 13 ans avec mes premières lignes en HTML — mon tout premier projet était un site sur les Jeux Olympiques. Rapidement, j'ai appris grâce à des ressources comme Mimo, Google Learn et des outils d'IA (ChatGPT), en adoptant une méthode pratique : tester, échouer, analyser et itérer.</p>
-      <p class="text-slate-300 mt-3">À 14 ans, j'ai découvert Python, qui a transformé ma façon d'aborder la programmation. Depuis, je conçois des projets concrets mêlant vision par ordinateur, traitement audio et assistants vocaux, en combinant rigueur, créativité et volonté d'apprendre. Retrouvez mes travaux et contributions sur mon GitHub — je suis disponible pour des collaborations sérieuses et des projets éducatifs.</p>
-    </div>
-  </section>
+    <footer class="mt-12">
+      <div class="max-w-3xl mx-auto muted">© <span id="year"></span> Ethan — Python, CV/IA & Assistants Vocaux · <a href="https://github.com/firecold944" class="text-[var(--accent-2)]">GitHub</a></div>
+    </footer>
+  </main>
 
-  <!-- SKILLS -->
-  <section id="skills" class="mx-auto max-w-6xl px-4 py-10 relative">
-  <h2 class="text-2xl md:text-3xl font-semibold mb-6 text-glow animate__animated animate__fadeIn">Compétences principales</h2>
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-      <div class="skill-card bg-slate-900/60 border border-white/10 p-4 rounded-lg hover:border-emerald-400/30 transition-all duration-300">
-        <h3 class="text-base flex items-center gap-2">
-          <span class="p-2 bg-emerald-500/10 border border-emerald-400/20 rounded-xl icon-float">🐍</span>
-          Python Intermédiaire
-        </h3>
-        <p class="text-sm text-slate-300 mt-2">Bonne maîtrise des bases, scripts, automatisation et respect des bonnes pratiques PEP8.</p>
-        <div class="mt-3 h-1 w-full bg-slate-700 rounded-full">
-          <div class="h-1 bg-emerald-500 rounded-full" style="width: 60%"></div>
-        </div>
-      </div>
-      
-      <div class="skill-card bg-slate-900/60 border border-white/10 p-4 rounded-lg hover:border-cyan-400/30 transition-all duration-300">
-        <h3 class="text-base flex items-center gap-2">
-          <span class="p-2 bg-cyan-500/10 border border-cyan-400/20 rounded-xl icon-float">📷</span>
-          OpenCV (cv2)
-        </h3>
-        <p class="text-sm text-slate-300 mt-2">Traitement d'images, détection d'objets, reconnaissance faciale et filtres avancés avec la bibliothèque OpenCV.</p>
-        <div class="mt-3 h-1 w-full bg-slate-700 rounded-full">
-          <div class="h-1 bg-cyan-500 rounded-full" style="width: 75%"></div>
-        </div>
-      </div>
-      
-      <div class="skill-card bg-slate-900/60 border border-white/10 p-4 rounded-lg hover:border-fuchsia-400/30 transition-all duration-300">
-        <h3 class="text-base flex items-center gap-2">
-          <span class="p-2 bg-fuchsia-500/10 border border-fuchsia-400/20 rounded-xl icon-float">🖥️</span>
-          MediaPipe
-        </h3>
-        <p class="text-sm text-slate-300 mt-2">Détection de poses, mains et visages en temps réel avec intégration de modèles pré-entraînés pour des applications interactives.</p>
-        <div class="mt-3 h-1 w-full bg-slate-700 rounded-full">
-          <div class="h-1 bg-fuchsia-500 rounded-full" style="width: 70%"></div>
-        </div>
-      </div>
-      
-      <div class="skill-card bg-slate-900/60 border border-white/10 p-4 rounded-lg hover:border-amber-400/30 transition-all duration-300">
-        <h3 class="text-base flex items-center gap-2">
-          <span class="p-2 bg-amber-500/10 border border-amber-400/20 rounded-xl icon-float">🗣️</span>
-          Traitement Audio
-        </h3>
-        <p class="text-sm text-slate-300 mt-2">Reconnaissance vocale (SpeechRecognition), synthèse vocale (gTTS) et traitement du signal audio pour assistants vocaux.</p>
-        <div class="mt-3 h-1 w-full bg-slate-700 rounded-full">
-          <div class="h-1 bg-amber-500 rounded-full" style="width: 80%"></div>
-        </div>
-      </div>
-      
-      <div class="skill-card bg-slate-900/60 border border-white/10 p-4 rounded-lg hover:border-purple-400/30 transition-all duration-300">
-        <h3 class="text-base flex items-center gap-2">
-          <span class="p-2 bg-purple-500/10 border border-purple-400/20 rounded-xl icon-float">📊</span>
-          Data Science
-        </h3>
-        <p class="text-sm text-slate-300 mt-2">Analyse de données avec pandas, NumPy et visualisation avec Matplotlib/Seaborn pour l'exploration et la modélisation.</p>
-        <div class="mt-3 h-1 w-full bg-slate-700 rounded-full">
-          <div class="h-1 bg-purple-500 rounded-full" style="width: 65%"></div>
-        </div>
-      </div>
-      
-      <div class="skill-card bg-slate-900/60 border border-white/10 p-4 rounded-lg hover:border-blue-400/30 transition-all duration-300">
-        <h3 class="text-base flex items-center gap-2">
-          <span class="p-2 bg-blue-500/10 border border-blue-400/20 rounded-xl icon-float">🖼️</span>
-          CustomTkinter
-        </h3>
-        <p class="text-sm text-slate-300 mt-2">Création d'interfaces utilisateur modernes et personnalisées pour applications desktop avec CustomTkinter.</p>
-        <div class="mt-3 h-1 w-full bg-slate-700 rounded-full">
-          <div class="h-1 bg-blue-500 rounded-full" style="width: 75%"></div>
-        </div>
-      </div>
-    </div>
-  </section>
+  <!-- Assets: particles & matrix scripts -->
+  <script src="https://cdn.jsdelivr.net/gh/VincentGarreau/particles.js@2.0.0/particles.min.js" defer></script>
 
-  <!-- PROJECTS -->
-  <section id="projet" class="mx-auto max-w-6xl px-4 py-10 relative">
-  <h2 class="text-2xl md:text-3xl font-semibold mb-6 text-glow animate__animated animate__fadeIn">Projets phares</h2>
-    
-    <div class="grid gap-6">
-      <!-- Projet 1 avec animation -->
-      <div class="project-card bg-slate-900/70 p-6 rounded-lg border border-white/10 hover:border-emerald-400/30 transition-all duration-300 relative overflow-hidden">
-        <div class="absolute -right-10 -top-10 w-32 h-32 bg-emerald-500/10 rounded-full filter blur-xl"></div>
-        <h3 class="flex items-center gap-2 mb-2 text-xl">
-          <span class="icon-float">🎤</span> 
-          <span class="text-glow">Assistant Vocal IA (Desktop)</span>
-        </h3>
-        <p class="text-slate-300 mb-4">Assistant vocal en Python intégrant SpeechRecognition, gTTS, automatisation clavier/souris et UI CustomTkinter avec des fonctionnalités avancées de commande vocale.</p>
-        <div class="flex flex-wrap gap-2 mb-4">
-          <span class="px-2 py-1 bg-white/5 border border-white/10 rounded text-slate-200 hover:bg-emerald-500/20 hover:border-emerald-400/30 transition-colors">Python</span>
-          <span class="px-2 py-1 bg-white/5 border border-white/10 rounded text-slate-200 hover:bg-cyan-500/20 hover:border-cyan-400/30 transition-colors">SpeechRecognition</span>
-          <span class="px-2 py-1 bg-white/5 border border-white/10 rounded text-slate-200 hover:bg-amber-500/20 hover:border-amber-400/30 transition-colors">gTTS</span>
-          <span class="px-2 py-1 bg-white/5 border border-white/10 rounded text-slate-200 hover:bg-fuchsia-500/20 hover:border-fuchsia-400/30 transition-colors">CustomTkinter</span>
-        </div>
-        <div class="flex gap-3 flex-wrap">
-    <a href="https://github.com/firecold944/project-controle-vocal" target="_blank" rel="noopener noreferrer" class="px-4 py-2 bg-emerald-500 hover:bg-emerald-600 rounded text-white transition-all duration-300 hover:shadow-lg hover:shadow-emerald-500/30 flex items-center gap-2" aria-label="Voir le dépôt project-controle-vocal sur GitHub">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
-            </svg>
-            Voir le repo
-          </a>
-          <a href="https://github.com/firecold944/project-controle-vocal#readme" target="_blank" rel="noopener noreferrer" class="px-4 py-2 border border-white/20 rounded hover:bg-white/10 transition-all duration-300 flex items-center gap-2">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-              <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/>
-            </svg>
-            Documentation
-          </a>
-        </div>
-      </div>
-
-
-      <!-- Projet 3 avec animation -->
-      <div class="project-card bg-slate-900/70 p-6 rounded-lg border border-white/10 hover:border-purple-400/30 transition-all duration-300 relative overflow-hidden">
-        <div class="absolute -right-10 -top-10 w-32 h-32 bg-purple-500/10 rounded-full filter blur-xl"></div>
-        <h3 class="flex items-center gap-2 mb-2 text-xl">
-          <span class="icon-float">🎤</span> 
-          <span class="text-glow">Assistant Vocal gTTS (Simplifié)</span>
-        </h3>
-        <p class="text-slate-300 mb-4">Version simplifiée d'un assistant vocal en Python utilisant gTTS et reconnaissance vocale avec des commandes personnalisables et une interface console intuitive.</p>
-        <div class="flex flex-wrap gap-2 mb-4">
-          <span class="px-2 py-1 bg-white/5 border border-white/10 rounded text-slate-200 hover:bg-emerald-500/20 hover:border-emerald-400/30 transition-colors">Python</span>
-          <span class="px-2 py-1 bg-white/5 border border-white/10 rounded text-slate-200 hover:bg-amber-500/20 hover:border-amber-400/30 transition-colors">gTTS</span>
-          <span class="px-2 py-1 bg-white/5 border border-white/10 rounded text-slate-200 hover:bg-cyan-500/20 hover:border-cyan-400/30 transition-colors">SpeechRecognition</span>
-          <span class="px-2 py-1 bg-white/5 border border-white/10 rounded text-slate-200 hover:bg-blue-500/20 hover:border-blue-400/30 transition-colors">pyttsx3</span>
-        </div>
-        <div class="flex gap-3 flex-wrap">
-    <a href="https://github.com/firecold944/assistant-vocal-gTTs/tree/main" target="_blank" rel="noopener noreferrer" class="px-4 py-2 bg-emerald-500 hover:bg-emerald-600 rounded text-white transition-all duration-300 hover:shadow-lg hover:shadow-emerald-500/30 flex items-center gap-2" aria-label="Voir le dépôt assistant-vocal-gTTs sur GitHub">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
-            </svg>
-            Voir le repo
-          </a>
-          <a href="https://github.com/firecold944/assistant-vocal-gTTs/tree/main#readme" target="_blank" rel="noopener noreferrer" class="px-4 py-2 border border-white/20 rounded hover:bg-white/10 transition-all duration-300 flex items-center gap-2">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-              <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/>
-            </svg>
-            Documentation
-          </a>
-        </div>
-      </div>
-
-      <!-- Projet 4 avec animation (nouveau projet) -->
-      <div class="project-card bg-slate-900/70 p-6 rounded-lg border border-white/10 hover:border-teal-400/30 transition-all duration-300 relative overflow-hidden">
-        <div class="absolute -right-10 -top-10 w-32 h-32 bg-teal-500/10 rounded-full filter blur-xl"></div>
-        <h3 class="flex items-center gap-2 mb-2 text-xl">
-          <span class="icon-float">✍️</span> 
-          <span class="text-glow">Handwriting Recognition Model</span>
-        </h3>
-        <p class="text-slate-300 mb-4">Modèle de reconnaissance d'écriture manuscrite en Python utilisant des techniques d'apprentissage automatique pour identifier et transcrire des textes manuscrits.</p>
-        <div class="flex flex-wrap gap-2 mb-4">
-          <span class="px-2 py-1 bg-white/5 border border-white/10 rounded text-slate-200 hover:bg-emerald-500/20 hover:border-emerald-400/30 transition-colors">Python</span>
-          <span class="px-2 py-1 bg-white/5 border border-white/10 rounded text-slate-200 hover:bg-teal-500/20 hover:border-teal-400/30 transition-colors">TensorFlow</span>
-          <span class="px-2 py-1 bg-white/5 border border-white/10 rounded text-slate-200 hover:bg-blue-500/20 hover:border-blue-400/30 transition-colors">OpenCV</span>
-          <span class="px-2 py-1 bg-white/5 border border-white/10 rounded text-slate-200 hover:bg-purple-500/20 hover:border-purple-400/30 transition-colors">NumPy</span>
-        </div>
-        <div class="flex gap-3 flex-wrap">
-    <a href="https://github.com/firecold944/handswritting_model" target="_blank" rel="noopener noreferrer" class="px-4 py-2 bg-emerald-500 hover:bg-emerald-600 rounded text-white transition-all duration-300 hover:shadow-lg hover:shadow-emerald-500/30 flex items-center gap-2" aria-label="Voir le dépôt handswritting_model sur GitHub">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
-            </svg>
-            Voir le repo
-          </a>
-          <a href="https://github.com/firecold944/handswritting_model#readme" target="_blank" rel="noopener noreferrer" class="px-4 py-2 border border-white/20 rounded hover:bg-white/10 transition-all duration-300 flex items-center gap-2">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-              <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/>
-            </svg>
-            Documentation
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section id="contact" class="mx-auto max-w-6xl px-4 py-10 grid md:grid-cols-2 gap-6 relative">
-  <div class="bg-slate-900/60 border border-white/10 p-6 rounded-lg hover:border-emerald-400/30 transition-all duration-300 relative overflow-hidden">
-      <div class="absolute -right-10 -top-10 w-32 h-32 bg-emerald-500/10 rounded-full filter blur-xl"></div>
-      <h3 class="font-semibold mb-2 text-xl text-glow">Discutons de votre projet</h3>
-  <p class="text-slate-300 mb-4">Disponible pour collaborations amicales et projets freelance. Envoyez-moi un message ou visitez mon GitHub pour voir mes réalisations.</p>
-      <div class="flex flex-wrap gap-3">
-    <a href="mailto:ethanokobe944@gmail.com" class="px-4 py-2 bg-emerald-500 rounded hover:bg-emerald-600 text-white transition-all duration-300 hover:shadow-lg hover:shadow-emerald-500/30 flex items-center gap-2">
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-        <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z"/>
-      </svg>
-      Envoyer un email
-    </a>
-    <a href="https://github.com/firecold944" target="_blank" rel="noopener noreferrer" class="px-4 py-2 border border-white/20 rounded hover:bg-white/10 transition-all duration-300 flex items-center gap-2">
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
-      </svg>
-      Profil GitHub
-    </a>
-    <a href="https://wa.me/0504177049" class="px-4 py-2 bg-green-500 rounded hover:bg-green-600 text-white transition-all duration-300 flex items-center gap-2" target="_blank" rel="noopener noreferrer">
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M13.601 2.326A7.956 7.956 0 0 0 8.002 0C3.582 0 .002 3.582.002 8c0 1.409.371 2.782 1.075 3.992L0 16l4.117-1.075A7.96 7.96 0 0 0 8.002 16c4.418 0 7.999-3.582 7.999-8 0-1.409-.371-2.782-1.075-3.992a7.956 7.956 0 0 0-1.325-1.682zm-5.599 12.13c-1.25 0-2.47-.33-3.53-.95l-.25-.15-2.44.64.65-2.38-.16-.25c-.62-1.04-.95-2.25-.95-3.53 0-3.59 2.92-6.5 6.5-6.5 1.73 0 3.36.67 4.59 1.89a6.47 6.47 0 0 1 1.91 4.61c0 3.58-2.92 6.5-6.5 6.5zm3.56-4.98c-.2-.1-1.18-.58-1.36-.65-.18-.07-.31-.1-.44.1-.13.2-.5.65-.61.78-.11.13-.22.15-.41.05-.2-.1-.84-.31-1.6-.99-.59-.52-.99-1.16-1.11-1.36-.12-.2-.01-.31.09-.41.09-.09.2-.24.3-.36.1-.12.13-.21.2-.35.07-.14.04-.27-.02-.37-.07-.1-.44-1.06-.6-1.45-.16-.39-.32-.34-.44-.35-.11-.01-.24-.01-.37-.01-.13 0-.34.05-.52.24-.18.19-.7.68-.7 1.65s.72 1.92.82 2.05c.1.13 1.42 2.17 3.45 2.96.48.21.85.34 1.14.44.48.15.92.13 1.27.08.39-.06 1.18-.48 1.35-.94.17-.46.17-.85.12-.94-.05-.09-.18-.13-.38-.23z"/></svg>
-      WhatsApp (père)
-    </a>
-    </div>
-    
-    <div class="bg-slate-900/60 border border-white/10 p-6 rounded-lg hover:border-blue-400/30 transition-all duration-300 relative overflow-hidden">
-      <div class="absolute -right-10 -top-10 w-32 h-32 bg-blue-500/10 rounded-full filter blur-xl"></div>
-      <h3 class="font-semibold mb-2 text-xl text-glow">Statistiques GitHub</h3>
-  <!-- The IDs below will be populated by the JavaScript -->
-  <div class="grid grid-cols-2 gap-4 text-center">
-        <div class="p-3 bg-slate-800/30 rounded">
-          <div class="text-3xl font-bold text-emerald-400" id="github-repos">—</div>
-          <div class="text-sm text-slate-300">Dépôts</div>
-        </div>
-        <div class="p-3 bg-slate-800/30 rounded">
-          <div class="text-3xl font-bold text-cyan-400" id="github-stars">—</div>
-          <div class="text-sm text-slate-300">Étoiles</div>
-        </div>
-        <div class="p-3 bg-slate-800/30 rounded">
-          <!-- Note: Getting a reliable commit count for a user via the public API is complex and can hit rate limits.
-               This is a placeholder that can be replaced with a more advanced solution if needed. -->
-          <div class="text-3xl font-bold text-purple-400" id="github-commits">—</div>
-          <div class="text-sm text-slate-300">Commits</div>
-        </div>
-        <div class="p-3 bg-slate-800/30 rounded">
-          <!-- Note: GitHub contributions are difficult to fetch via the public API. We'll use followers as a proxy here,
-               as it's a common metric for a developer's network and activity. -->
-          <div class="text-3xl font-bold text-amber-400" id="github-contributions">—</div>
-          <div class="text-sm text-slate-300">Contributions</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer class="border-t border-white/10 py-8 text-slate-400 text-sm text-center relative">
-    <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-emerald-500/50 to-transparent"></div>
-    © <span id="year"></span> Ethan – Python, CV/IA & Assistants Vocaux
-    
-    <div class="mt-2 flex justify-center gap-4">
-      <a href="https://github.com/firecold944" target="_blank" class="text-slate-400 hover:text-emerald-400 transition-colors">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-          <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
-        </svg>
-      </a>
-      <a href="mailto:ethanokobe944@gmail.com" class="text-slate-400 hover:text-emerald-400 transition-colors">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"></svg>
-          <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z"/>
-        </svg>
-      </a>
-    </div>
-  </footer>
-
-  <!-- Load particles.js (CDN) -->
-  <script src="https://cdn.jsdelivr.net/gh/VincentGarreau/particles.js@2.0.0/particles.min.js"></script>
-
-  <!-- MATRIX JS amélioré -->
   <script>
-    const canvas = document.getElementById('matrixCanvas');
-    const ctx = canvas.getContext('2d');
-    const letters = "アカサタナハマヤラワ0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ#$%&()*+-/<=>?@[]^_{|}~".split('');
-    const fontSize = 16;
-    let columns;
-    let drops;
-    let matrixText = "PYTHON OPENCV MEDIAPIPE GTTS SPEECHRECOGNITION";
+    // Matrix canvas (optimized, resize debounce)
+    (function(){
+      const canvas = document.getElementById('matrixCanvas');
+      if(!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789".split('');
+      const fontSize = 14;
+      let cols = 0, drops = [];
+      let rafId = null;
 
-    function resize() {
-      const dpr = window.devicePixelRatio || 1;
-      canvas.width = Math.floor(canvas.clientWidth * dpr);
-      canvas.height = Math.floor(canvas.clientHeight * dpr);
-      canvas.style.width = canvas.clientWidth + 'px';
-      canvas.style.height = canvas.clientHeight + 'px';
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      columns = Math.floor(canvas.width / fontSize);
-      drops = Array(columns).fill(1);
-    }
-
-    function draw() {
-      ctx.fillStyle = 'rgba(0,0,0,0.05)';
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-      
-      // Dessiner le texte de fond
-      ctx.fillStyle = 'rgba(16,185,129,0.03)';
-      ctx.font = 'bold 48px monospace';
-      ctx.textAlign = 'center';
-      ctx.fillText(matrixText, canvas.width/2, canvas.height/2);
-      
-      // Dessiner la pluie Matrix
-      ctx.fillStyle = '#10b981';
-      ctx.font = fontSize + "px monospace";
-      ctx.textAlign = 'left';
-      
-      for (let i = 0; i < drops.length; i++) {
-        const text = letters[Math.floor(Math.random() * letters.length)];
-        const opacity = Math.random() * 0.5 + 0.5;
-        ctx.globalAlpha = opacity;
-        
-        // Gradient pour les caractères
-        const gradient = ctx.createLinearGradient(0, drops[i] * fontSize, 0, (drops[i] + 1) * fontSize);
-        gradient.addColorStop(0, '#10b981');
-        gradient.addColorStop(1, '#a7f3d0');
-        ctx.fillStyle = gradient;
-        
-        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-        
-        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-          drops[i] = 0;
-          // Occasionnellement ajouter un mot spécial
-          if (Math.random() > 0.95) {
-            const word = matrixText.split(' ')[Math.floor(Math.random() * matrixText.split(' ').length)];
-            for (let j = 0; j < word.length; j++) {
-              if (i + j < drops.length) {
-                ctx.fillText(word[j], (i + j) * fontSize, drops[i + j] * fontSize);
-              }
-            }
-          }
-        }
-        drops[i]++;
+      function resizeCanvas(){
+        const dpr = window.devicePixelRatio || 1;
+        canvas.width = Math.max(300, Math.floor(canvas.clientWidth * dpr));
+        canvas.height = Math.max(120, Math.floor(canvas.clientHeight * dpr));
+        ctx.setTransform(dpr,0,0,dpr,0,0);
+        cols = Math.floor(canvas.clientWidth / fontSize) || 1;
+        drops = Array.from({length:cols}, ()=>Math.random()*-20);
       }
-      ctx.globalAlpha = 1;
-      requestAnimationFrame(draw);
-    }
 
-    window.addEventListener('resize', resize);
-    resize();
-    draw();
+      function draw(){
+        ctx.fillStyle = 'rgba(0,0,0,0.06)';
+        ctx.fillRect(0,0,canvas.width,canvas.height);
+        ctx.fillStyle = '#10b981';
+        ctx.font = fontSize + 'px monospace';
+        for(let i=0;i<cols;i++){
+          const text = letters[Math.floor(Math.random()*letters.length)];
+          const x = i*fontSize;
+          const y = drops[i]*fontSize;
+          ctx.globalAlpha = 0.9 - Math.random()*0.6;
+          ctx.fillText(text, x, y);
+          if(y > canvas.clientHeight && Math.random() > 0.985) drops[i] = 0;
+          drops[i]++;
+        }
+        ctx.globalAlpha = 1;
+        rafId = requestAnimationFrame(draw);
+      }
+
+      let resizeTimer;
+      window.addEventListener('resize', ()=>{ clearTimeout(resizeTimer); resizeTimer = setTimeout(()=>{ cancelAnimationFrame(rafId); resizeCanvas(); draw(); }, 150); });
+      resizeCanvas();
+      draw();
+    })();
   </script>
 
-  <!-- Particules JS -->
   <script>
-    // Initialisation safe de particles.js si chargé
-    function initParticlesSafe() {
-      try {
-        if (window.particlesJS) {
+    // particles.js safe init
+    function initParticles(){
+      try{
+        if(window.particlesJS){
           particlesJS('particles-js', {
             particles: {
-              number: { value: 60, density: { enable: true, value_area: 800 } },
-              color: { value: '#10b981' },
+              number: { value: 36 },
+              color: { value: ['#06b6d4','#10b981'] },
               shape: { type: 'circle' },
-              opacity: { value: 0.4 },
-              size: { value: 3 },
-              line_linked: { enable: true, distance: 120, color: '#10b981', opacity: 0.15, width: 1 },
-              move: { enable: true, speed: 1 }
+              opacity: { value: 0.28 },
+              size: { value: 2.6 },
+              line_linked: { enable: true, distance: 110, color: '#06b6d4', opacity: 0.06, width: 1 }
             },
-            interactivity: { detect_on: 'canvas', events: { onhover: { enable: true, mode: 'grab' }, onclick: { enable: true, mode: 'push' } }, modes: { grab: { distance: 120 } } },
+            interactivity: { detect_on: 'canvas', events: { onhover: { enable: true, mode: 'grab' }, onclick: { enable: true, mode: 'push' } }, modes: { grab:{ distance:120 } } },
             retina_detect: true
           });
         }
-      } catch (e) {
-        // ignore
+      }catch(e){
+        // si échec, on ignore (CDN can fail)
+        console.warn('particles init failed', e);
       }
     }
-    // Attendre un peu pour l'initialisation (CDN peut être lent)
-    setTimeout(initParticlesSafe, 500);
+    window.addEventListener('load', ()=>setTimeout(initParticles,300));
+  </script>
 
-    // Continue avec la logique du code
-    // Fonction pour mettre à jour les statistiques GitHub
-    async function updateGithubStats() {
+  <script>
+    // GitHub stats (graceful)
+    async function updateGithubStats(){
       const username = 'firecold944';
-      const userApiUrl = `https://api.github.com/users/${username}`;
-      const reposApiUrl = `https://api.github.com/users/${username}/repos?per_page=100`;
+      const ids = ['github-repos','github-stars','github-commits','github-contributions'];
+      ids.forEach(id=>{ const el = document.getElementById(id); if(el) el.textContent = '—'; });
+      try{
+        const [uRes, rRes] = await Promise.all([
+          fetch(`https://api.github.com/users/${username}`),
+          fetch(`https://api.github.com/users/${username}/repos?per_page=100`)
+        ]);
+        if(!uRes.ok) throw new Error('user fetch failed');
+        const u = await uRes.json();
+        const repos = rRes.ok ? await rRes.json() : [];
+        const stars = Array.isArray(repos) ? repos.reduce((s,r)=>s + (r.stargazers_count||0), 0) : '—';
 
-      try {
-        // Fetch user data for repos, followers, and gists
-        const userResponse = await fetch(userApiUrl);
-        const userData = await userResponse.json();
-
-        // Fetch repositories to calculate total stars
-        const reposResponse = await fetch(reposApiUrl);
-        const reposData = await reposResponse.json();
-        
-        // Sum stars from all repositories
-        const totalStars = reposData.reduce((sum, repo) => sum + repo.stargazers_count, 0);
-
-        // Update the DOM with the fetched data
-        document.getElementById('github-repos').textContent = userData.public_repos;
-        document.getElementById('github-stars').textContent = totalStars;
-
-        // Proxy for commits (using public gists)
-        document.getElementById('github-commits').textContent = userData.public_gists;
-
-        // Proxy for contributions (using followers)
-        document.getElementById('github-contributions').textContent = userData.followers;
-
-      } catch (error) {
-        console.error('Erreur lors de la récupération des données GitHub:', error);
-        // Fallback to placeholders if the API call fails
-        document.getElementById('github-repos').textContent = '—';
-        document.getElementById('github-stars').textContent = '—';
-        document.getElementById('github-commits').textContent = '—';
-        document.getElementById('github-contributions').textContent = '—';
+        document.getElementById('github-repos').textContent = u.public_repos ?? '—';
+        document.getElementById('github-stars').textContent = stars ?? '—';
+        document.getElementById('github-commits').textContent = u.public_gists ?? '—';
+        document.getElementById('github-contributions').textContent = u.followers ?? '—';
+      }catch(err){
+        console.warn('GitHub stats error', err);
       }
     }
 
-    // Set the current year in the footer
     document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Call the function to update stats on page load
-    window.onload = function() {
-      updateGithubStats();
-    };
+    window.addEventListener('load', updateGithubStats);
   </script>
 </body>
 </html>
