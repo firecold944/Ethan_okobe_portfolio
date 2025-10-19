@@ -6,7 +6,6 @@
   <title>Ethan Okobe — Développeur Python & IA</title>
   <meta name="description" content="Portfolio — Ethan Okobe. Développeur Python spécialisé en vision par ordinateur, traitement audio et assistants vocaux." />
   <meta name="author" content="Ethan Okobe" />
-  <meta name="google-site-verification" content="nVilIH4Li-saVnTJxRWIwKo0pJ34IPw8N147HGP4Hsg" />
   <script src="https://cdn.tailwindcss.com" defer></script>
 
   <style>
@@ -14,9 +13,10 @@
       --bg-900:#041022;
       --bg-800:#07142a;
       --muted:#9aa8bb;
-      --accent-1:#06b6d4; /* cyan */
-      --accent-2:#10b981; /* emerald */
+      --accent-1:#06b6d4;
+      --accent-2:#10b981;
       --glass: rgba(255,255,255,0.04);
+      --card-shadow: 0 8px 30px rgba(2,6,23,0.55);
     }
 
     html,body{height:100%}
@@ -25,96 +25,110 @@
       font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
       -webkit-font-smoothing:antialiased;
       -moz-osx-font-smoothing:grayscale;
-      background: radial-gradient(1200px 500px at 8% 18%, rgba(6,182,212,0.04), transparent 20%),
-                  radial-gradient(900px 400px at 92% 82%, rgba(16,185,129,0.035), transparent 18%),
-                  linear-gradient(180deg,var(--bg-900),var(--bg-800));
+      background:
+        radial-gradient(900px 380px at 8% 18%, rgba(6,182,212,0.035), transparent 18%),
+        radial-gradient(700px 300px at 92% 82%, rgba(16,185,129,0.03), transparent 18%),
+        linear-gradient(180deg,var(--bg-900),var(--bg-800));
       color: #E6EEF6;
       line-height:1.5;
       -webkit-tap-highlight-color: transparent;
+      -webkit-font-kerning: normal;
     }
 
     /* Header */
-    header.site-header{
-      position:sticky; top:0; z-index:50;
+    .site-header{
+      position:sticky; top:0; z-index:60;
       backdrop-filter: blur(6px);
       background: linear-gradient(180deg, rgba(4,18,34,0.6), rgba(4,18,34,0.28));
       border-bottom: 1px solid rgba(255,255,255,0.03);
     }
-    .logo-mark{ width:44px; height:44px; display:inline-grid; place-items:center; border-radius:10px; background:linear-gradient(135deg,var(--bg-900),#05243a); box-shadow: 0 8px 20px rgba(2,6,23,0.6); }
+    .logo-mark{ width:48px; height:48px; display:inline-grid; place-items:center; border-radius:10px;
+      background: linear-gradient(135deg,#05243a,var(--bg-900)); box-shadow: 0 8px 22px rgba(2,6,23,0.6);
+    }
 
-    /* Main layout */
-    main{ max-width:1100px; margin:0 auto; padding:2.5rem 1rem; }
+    /* Layout */
+    .container{ max-width:1100px; margin:0 auto; padding:2.25rem 1rem; }
+    .section-title{ font-size:1.25rem; font-weight:700; color:#E8FFF7; }
 
     /* Hero */
     .hero-title{ font-weight:800; letter-spacing:-0.01em; color: #E8FFF7; }
-    .hero-lead{ color:var(--muted); max-width:58ch; font-size:1.05rem; }
+    .hero-lead{ color:var(--muted); max-width:62ch; font-size:1.05rem; }
 
     /* Cards */
     .card{
-      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      background: linear-gradient(180deg, rgba(255,255,255,0.018), rgba(255,255,255,0.01));
       border: 1px solid var(--glass);
       border-radius: 14px;
-      box-shadow: 0 8px 26px rgba(2,6,23,0.55);
+      box-shadow: var(--card-shadow);
       transition: transform .28s cubic-bezier(.2,.9,.2,1), box-shadow .28s, border-color .28s;
     }
     .card:hover, .card:focus-within{
       transform: translateY(-8px);
-      box-shadow: 0 22px 48px rgba(2,6,23,0.6), 0 0 30px rgba(6,182,212,0.06);
+      box-shadow: 0 24px 48px rgba(2,6,23,0.6), 0 0 32px rgba(6,182,212,0.06);
       border-color: rgba(6,182,212,0.12);
     }
 
     /* Pills */
     .pill{
       display:inline-flex; align-items:center; gap:8px;
-      padding:.32rem .6rem; border-radius:999px; font-weight:600; font-size:.82rem;
+      padding:.28rem .6rem; border-radius:999px; font-weight:600; font-size:.82rem;
       background: rgba(255,255,255,0.02); color:var(--muted); border:1px solid rgba(255,255,255,0.02);
     }
 
-    /* CTA */
+    /* Buttons */
     .btn-primary{
       display:inline-flex; align-items:center; gap:.6rem;
       background: linear-gradient(90deg,var(--accent-2),var(--accent-1));
-      color:#03151a; font-weight:700; padding:.6rem 1rem; border-radius:10px;
-      box-shadow: 0 12px 30px rgba(16,185,129,0.12);
-      border: none; cursor:pointer;
+      color:#03151a; font-weight:700; padding:.58rem .95rem; border-radius:10px;
+      box-shadow: 0 12px 30px rgba(16,185,129,0.12); border: none; cursor:pointer;
     }
     .btn-primary:focus{ outline:3px solid rgba(16,185,129,0.12); outline-offset:3px; }
     .btn-ghost{
-      background:transparent; color:var(--muted); border:1px solid rgba(255,255,255,0.04); padding:.55rem .9rem; border-radius:10px;
+      background:transparent; color:var(--muted); border:1px solid rgba(255,255,255,0.04); padding:.5rem .85rem; border-radius:10px;
     }
 
-    /* Matrix canvas container */
-    .matrix-container{
-      position:relative; overflow:hidden; border-radius:12px; min-height:220px; padding:0;
-      background: linear-gradient(180deg, rgba(2,6,23,0.45), rgba(2,6,23,0.22));
-      border:1px solid rgba(255,255,255,0.02);
-    }
+    /* Matrix */
+    .matrix-container{ position:relative; overflow:hidden; border-radius:12px; min-height:220px; padding:0; background: linear-gradient(180deg, rgba(2,6,23,0.45), rgba(2,6,23,0.22)); border:1px solid rgba(255,255,255,0.02); }
     #matrixCanvas{ width:100%; height:100%; display:block; }
 
-    /* Accessibility & reduced motion */
+    /* Nav mobile */
+    .nav-toggle{ display:none; }
+    .nav-list{ display:flex; gap:0.5rem; align-items:center; }
+    @media (max-width:960px){
+      .nav-list{ display:none; position:absolute; right:1rem; top:64px; background:linear-gradient(180deg, rgba(4,18,34,0.95), rgba(4,18,34,0.9)); padding:.5rem; border-radius:10px; box-shadow:0 12px 30px rgba(2,6,23,0.6);}
+      .nav-list.open{ display:flex; flex-direction:column; width:210px; gap:.5rem; }
+      .nav-toggle{ display:inline-flex; background:transparent; border:1px solid rgba(255,255,255,0.04); padding:.4rem .6rem; border-radius:8px; color:var(--muted); }
+    }
+
+    /* Progress bar in skills */
+    .progress-bar{ height:8px; background:rgba(255,255,255,0.03); border-radius:999px; overflow:hidden; }
+    .progress{ height:100%; border-radius:999px; transition: width .7s cubic-bezier(.2,.9,.2,1); }
+
+    /* Accessibility */
+    .sr-only{ position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
     @media (prefers-reduced-motion: reduce){
       *{ transition:none!important; animation:none!important; }
     }
 
-    /* Utility tweaks */
+    /* Utilities */
     .muted { color: var(--muted); }
     .kicker { font-weight:700; color:var(--accent-2); font-size:.95rem; }
     footer{ color:var(--muted); font-size:.92rem; padding:2rem 0; text-align:center; }
 
     @media (max-width:640px){
       .hero-title{ font-size:1.8rem; }
-      main{ padding:1.2rem; }
+      .container{ padding:1.1rem; }
     }
   </style>
 </head>
-<body>
+<body class="antialiased">
   <a class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-[rgba(6,182,212,0.12)] text-white px-3 py-2 rounded" href="#main">Aller au contenu</a>
 
   <header class="site-header">
-    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+    <div class="container flex items-center justify-between relative">
       <a href="#main" class="flex items-center gap-3" aria-label="Accueil - Ethan Okobe">
         <div class="logo-mark" aria-hidden="true">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
             <rect x="1.5" y="1.5" width="21" height="21" rx="5" stroke="rgba(255,255,255,0.03)" stroke-width="1.5" fill="transparent"/>
             <path d="M6 15.5L10.5 10L18 16" stroke="url(#grad)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
             <defs><linearGradient id="grad" x1="0" x2="1"><stop offset="0" stop-color="#06b6d4"/><stop offset="1" stop-color="#10b981"/></linearGradient></defs>
@@ -126,22 +140,29 @@
         </div>
       </a>
 
-      <nav aria-label="navigation principale" class="flex items-center gap-3">
-        <a class="btn-ghost" href="#projet">Projets</a>
-        <a class="btn-ghost" href="#skills">Compétences</a>
-        <a class="btn-ghost" href="#contact">Contact</a>
-        <a class="btn-primary" href="https://github.com/firecold944" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <nav aria-label="navigation principale" class="relative">
+        <button id="navToggle" class="nav-toggle" aria-expanded="false" aria-controls="navList" title="Menu">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </button>
+
+        <div id="navList" class="nav-list" role="menu" aria-hidden="true">
+          <a class="btn-ghost" href="#projet" role="menuitem">Projets</a>
+          <a class="btn-ghost" href="#skills" role="menuitem">Compétences</a>
+          <a class="btn-ghost" href="#about" role="menuitem">À propos</a>
+          <a class="btn-ghost" href="#contact" role="menuitem">Contact</a>
+          <a class="btn-primary" href="https://github.com/firecold944" target="_blank" rel="noopener noreferrer" role="menuitem">GitHub</a>
+        </div>
       </nav>
     </div>
   </header>
 
-  <main id="main" role="main" class="mx-auto">
+  <main id="main" role="main" class="container">
     <!-- HERO -->
     <section class="grid lg:grid-cols-2 gap-8 items-center" aria-labelledby="hero-title">
       <div>
         <p class="kicker">Bonjour — je suis Ethan</p>
         <h1 id="hero-title" class="hero-title text-4xl md:text-5xl leading-tight">Développeur Python & Intelligence Artificielle</h1>
-        <p class="hero-lead mt-4">Je conçois des solutions pratiques en vision par ordinateur, traitement audio et assistants vocaux. Mes projets privilégient robustesse, ergonomie et prototypes fonctionnels intégrés avec OpenCV, MediaPipe et bibliothèques audio.</p>
+        <p class="hero-lead mt-4">Je conçois des solutions concrètes en vision par ordinateur, traitement audio et assistants vocaux. Mes projets privilégient robustesse, ergonomie et prototypes fonctionnels (OpenCV, MediaPipe, bibliothèques audio).</p>
 
         <div class="mt-6 flex flex-wrap gap-3">
           <span class="pill">Vision par ordinateur</span>
@@ -151,17 +172,18 @@
         </div>
 
         <div class="mt-6 flex gap-3">
-          <a class="btn-primary" href="#projet" aria-label="Voir le projet phare">Voir le projet phare</a>
+          <a class="btn-primary" href="#projet" aria-label="Voir projets">Voir projets</a>
           <a class="btn-ghost" href="#contact" aria-label="Me contacter">Me contacter</a>
+          <a class="btn-ghost" href="/assets/Ethan_Okobe_CV.pdf" aria-label="Télécharger CV" target="_blank" rel="noopener">Télécharger CV</a>
         </div>
 
         <dl class="mt-6 grid grid-cols-3 gap-4 text-sm">
           <div>
-            <dt class="muted">Âge</dt>
-            <dd class="font-semibold">14 ans</dd>
+            <dt class="muted">Débuts</dt>
+            <dd class="font-semibold">Codage à 13 ans</dd>
           </div>
           <div>
-            <dt class="muted">Langage principal</dt>
+            <dt class="muted">Langage</dt>
             <dd class="font-semibold">Python</dd>
           </div>
           <div>
@@ -172,7 +194,7 @@
       </div>
 
       <div class="space-y-4">
-        <div class="card matrix-container" role="img" aria-label="Animation Matrix mettant en avant Python et bibliothèques">
+        <div class="card matrix-container" role="img" aria-label="Animation matrix mettant en avant Python et bibliothèques">
           <canvas id="matrixCanvas" aria-hidden="true"></canvas>
           <div class="absolute inset-x-4 bottom-4 text-xs font-mono muted"> $ python assistant.py —speech —opencv —mediapipe —ai </div>
         </div>
@@ -198,67 +220,67 @@
     </section>
 
     <!-- ABOUT -->
-    <section class="mt-12" aria-labelledby="about-title">
+    <section id="about" class="mt-12" aria-labelledby="about-title">
       <div class="flex gap-6 items-start">
-        <h2 id="about-title" class="text-2xl font-semibold">À propos</h2>
+        <h2 id="about-title" class="section-title">À propos</h2>
         <div class="card p-6">
-          <p class="font-semibold">Ethan Okobe Kemuel — passionné par l'IA et la robotique.</p>
-          <p class="muted mt-3">J'ai commencé à coder à 13 ans. À 14 ans je me suis spécialisé en Python, puis en vision par ordinateur et traitement audio. J'apprends par la pratique : prototype, test, itération.</p>
-          <p class="muted mt-3">Je collabore sur des projets éducatifs et techniques. Retrouve mes réalisations sur GitHub — disponible pour collaborations sérieuses.</p>
+          <h3 class="text-lg font-semibold">L’histoire d’Ethan Okobe Kemuel</h3>
+          <p class="muted mt-3">Je m’appelle Ethan Okobe Kemuel. Passionné d'intelligence artificielle, robotique et développement logiciel — j'ai grandi entouré par la technologie (mon père travaille en bases de données, mon frère étudie l'informatique).</p>
+          <p class="muted mt-3">J'ai commencé à coder à 13 ans (HTML), puis à 14 ans Python est devenu mon langage principal. J'apprends par la pratique : prototypage, tests et itérations rapides. J'aime combiner créativité et rigueur pour produire des prototypes fonctionnels.</p>
+          <p class="muted mt-3">Mes travaux se concentrent sur la vision par ordinateur, le traitement audio et les assistants vocaux. Retrouve mes projets sur GitHub — je suis disponible pour collaborations techniques et éducatives.</p>
         </div>
       </div>
     </section>
 
     <!-- SKILLS -->
     <section id="skills" class="mt-12" aria-labelledby="skills-title">
-      <h2 id="skills-title" class="text-2xl font-semibold mb-4">Compétences principales</h2>
+      <h2 id="skills-title" class="section-title mb-4">Compétences principales</h2>
       <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        <!-- skill -->
         <article class="card p-4" aria-labelledby="skill-python">
-          <h3 id="skill-python" class="font-semibold">🐍 Python — Intermédiaire</h3>
-          <p class="muted text-sm mt-2">Scripts, automatisation, structure de projet, bonnes pratiques PEP8.</p>
-          <div class="mt-3 h-2 w-full bg-[rgba(255,255,255,0.02)] rounded"><div class="h-2 rounded" style="width:60%;background:linear-gradient(90deg,var(--accent-2),var(--accent-1));"></div></div>
+          <h3 id="skill-python" class="font-semibold">🐍 Python</h3>
+          <p class="muted text-sm mt-2">Scripts, automatisation, structure de projet, bonnes pratiques.</p>
+          <div class="mt-3 progress-bar"><div class="progress" style="width:66%; background:linear-gradient(90deg,var(--accent-2),var(--accent-1));"></div></div>
         </article>
 
         <article class="card p-4" aria-labelledby="skill-opencv">
           <h3 id="skill-opencv" class="font-semibold">📷 OpenCV</h3>
-          <p class="muted text-sm mt-2">Traitement d'images, détection et pipelines temps réel.</p>
-          <div class="mt-3 h-2 w-full bg-[rgba(255,255,255,0.02)] rounded"><div class="h-2 rounded" style="width:75%;background:#06b6d4;"></div></div>
+          <p class="muted text-sm mt-2">Traitement d'images et pipelines temps réel.</p>
+          <div class="mt-3 progress-bar"><div class="progress" style="width:78%; background:var(--accent-1);"></div></div>
         </article>
 
         <article class="card p-4" aria-labelledby="skill-mediapipe">
           <h3 id="skill-mediapipe" class="font-semibold">🕹 MediaPipe</h3>
-          <p class="muted text-sm mt-2">Détection de pose/main/visage et applications interactives.</p>
-          <div class="mt-3 h-2 w-full bg-[rgba(255,255,255,0.02)] rounded"><div class="h-2 rounded" style="width:70%;background:#d946ef;"></div></div>
+          <p class="muted text-sm mt-2">Détection de pose/main/visage en temps réel.</p>
+          <div class="mt-3 progress-bar"><div class="progress" style="width:72%; background:#d946ef;"></div></div>
         </article>
 
         <article class="card p-4" aria-labelledby="skill-audio">
           <h3 id="skill-audio" class="font-semibold">🗣 Traitement audio</h3>
-          <p class="muted text-sm mt-2">SpeechRecognition, gTTS, pré-traitement audio et assistants vocaux.</p>
-          <div class="mt-3 h-2 w-full bg-[rgba(255,255,255,0.02)] rounded"><div class="h-2 rounded" style="width:80%;background:#f59e0b;"></div></div>
+          <p class="muted text-sm mt-2">SpeechRecognition, gTTS, pré-traitement audio.</p>
+          <div class="mt-3 progress-bar"><div class="progress" style="width:80%; background:#f59e0b;"></div></div>
         </article>
 
         <article class="card p-4" aria-labelledby="skill-ds">
           <h3 id="skill-ds" class="font-semibold">📊 Data Science</h3>
-          <p class="muted text-sm mt-2">pandas, NumPy, visualisations et exploration de données.</p>
-          <div class="mt-3 h-2 w-full bg-[rgba(255,255,255,0.02)] rounded"><div class="h-2 rounded" style="width:65%;background:#8b5cf6;"></div></div>
+          <p class="muted text-sm mt-2">pandas, NumPy, visualisations.</p>
+          <div class="mt-3 progress-bar"><div class="progress" style="width:64%; background:#8b5cf6;"></div></div>
         </article>
 
         <article class="card p-4" aria-labelledby="skill-ctk">
           <h3 id="skill-ctk" class="font-semibold">🖼️ CustomTkinter</h3>
           <p class="muted text-sm mt-2">Interfaces desktop modernes et ergonomiques.</p>
-          <div class="mt-3 h-2 w-full bg-[rgba(255,255,255,0.02)] rounded"><div class="h-2 rounded" style="width:75%;background:#3b82f6;"></div></div>
+          <div class="mt-3 progress-bar"><div class="progress" style="width:76%; background:#3b82f6;"></div></div>
         </article>
       </div>
     </section>
 
     <!-- PROJECTS -->
     <section id="projet" class="mt-12" aria-labelledby="projects-title">
-      <h2 id="projects-title" class="text-2xl font-semibold mb-4">Projets phares</h2>
+      <h2 id="projects-title" class="section-title mb-4">Projets phares</h2>
       <div class="grid gap-4">
         <article class="card p-6" aria-labelledby="proj-voice">
           <h3 id="proj-voice" class="text-lg font-semibold flex items-center gap-3">🎤 Assistant Vocal IA (Desktop)</h3>
-          <p class="muted mt-2">Assistant vocal en Python intégrant reconnaissance vocale, synthèse (gTTS) et UI CustomTkinter.</p>
+          <p class="muted mt-2">Assistant vocal Python avec reconnaissance vocale, synthèse gTTS et interface CustomTkinter. Prototype stable pour démonstration et usage local.</p>
           <div class="mt-4 flex flex-wrap gap-2">
             <span class="pill">Python</span><span class="pill">SpeechRecognition</span><span class="pill">gTTS</span><span class="pill">CustomTkinter</span>
           </div>
@@ -270,7 +292,7 @@
 
         <article class="card p-6" aria-labelledby="proj-gtts">
           <h3 id="proj-gtts" class="text-lg font-semibold flex items-center gap-3">🎤 Assistant gTTS (Simplifié)</h3>
-          <p class="muted mt-2">Prototype léger d'assistant vocal pour démonstration et apprentissage.</p>
+          <p class="muted mt-2">Prototype léger orienté démonstration pédagogique.</p>
           <div class="mt-4 flex gap-3">
             <a class="btn-primary" href="https://github.com/firecold944/assistant-vocal-gTTs/tree/main" target="_blank" rel="noopener">Voir le repo</a>
             <a class="btn-ghost" href="https://github.com/firecold944/assistant-vocal-gTTs/tree/main#readme" target="_blank" rel="noopener">Documentation</a>
@@ -279,7 +301,7 @@
 
         <article class="card p-6" aria-labelledby="proj-hand">
           <h3 id="proj-hand" class="text-lg font-semibold flex items-center gap-3">✍️ Handwriting Recognition</h3>
-          <p class="muted mt-2">Modèle de reconnaissance d’écriture manuscrite avec pré-traitement OpenCV et pipeline d'entraînement.</p>
+          <p class="muted mt-2">Pipeline de reconnaissance d’écriture manuscrite avec pré-traitement OpenCV et entraînement.</p>
           <div class="mt-4 flex gap-3">
             <a class="btn-primary" href="https://github.com/firecold944/handswritting_model" target="_blank" rel="noopener">Voir le repo</a>
             <a class="btn-ghost" href="https://github.com/firecold944/handswritting_model#readme" target="_blank" rel="noopener">Documentation</a>
@@ -292,10 +314,10 @@
     <section id="contact" class="mt-12 grid lg:grid-cols-2 gap-6" aria-labelledby="contact-title">
       <div class="card p-6">
         <h3 id="contact-title" class="text-lg font-semibold">Discutons de votre projet</h3>
-        <p class="muted mt-2">Disponible pour collaborations et projets éducatifs. Contact par email ou via GitHub.</p>
-        <div class="mt-4 flex gap-3">
+        <p class="muted mt-2">Disponible pour collaborations techniques et projets éducatifs. Contact principal : email.</p>
+        <div class="mt-4 flex gap-3 flex-wrap">
           <a class="btn-primary" href="mailto:ethanokobe944@gmail.com">Envoyer un email</a>
-          <a class="btn-ghost" href="https://wa.me/0504177049" target="_blank" rel="noopener">WhatsApp</a>
+          <a class="btn-ghost" href="https://github.com/firecold944" target="_blank" rel="noopener">GitHub</a>
         </div>
       </div>
 
@@ -312,7 +334,7 @@
           </div>
           <div class="p-3 bg-[rgba(255,255,255,0.02)] rounded">
             <div id="github-commits" class="text-2xl font-bold text-[#a78bfa]">—</div>
-            <div class="muted text-xs">Gists (proxy)</div>
+            <div class="muted text-xs">Gists</div>
           </div>
           <div class="p-3 bg-[rgba(255,255,255,0.02)] rounded">
             <div id="github-contributions" class="text-2xl font-bold text-[#f59e0b]">—</div>
@@ -323,23 +345,42 @@
     </section>
 
     <footer class="mt-12">
-      <div class="max-w-3xl mx-auto muted">© <span id="year"></span> Ethan — Python, CV/IA & Assistants Vocaux · <a href="https://github.com/firecold944" class="text-[var(--accent-2)]">GitHub</a></div>
+      <div class="max-w-3xl mx-auto muted">© <span id="year"></span> Ethan — Python, Vision & Audio · <a href="https://github.com/firecold944" class="text-[var(--accent-2)]">GitHub</a></div>
     </footer>
   </main>
 
-  <!-- Assets: particles & matrix scripts -->
-  <script src="https://cdn.jsdelivr.net/gh/VincentGarreau/particles.js@2.0.0/particles.min.js" defer></script>
+  <!-- Scripts: matrix, particles, nav, github -->
+  <script>
+    // Mobile nav toggle
+    (function(){
+      const toggle = document.getElementById('navToggle');
+      const list = document.getElementById('navList');
+      toggle && toggle.addEventListener('click', ()=>{
+        const open = list.classList.toggle('open');
+        list.setAttribute('aria-hidden', open ? 'false' : 'true');
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+      // close on outside click
+      document.addEventListener('click', (e)=>{
+        if(!list || !toggle) return;
+        if(!list.contains(e.target) && !toggle.contains(e.target)) {
+          list.classList.remove('open');
+          list.setAttribute('aria-hidden','true');
+          toggle.setAttribute('aria-expanded','false');
+        }
+      });
+    })();
+  </script>
 
   <script>
-    // Matrix canvas (optimized, resize debounce)
+    // Matrix canvas (optimized)
     (function(){
       const canvas = document.getElementById('matrixCanvas');
       if(!canvas) return;
       const ctx = canvas.getContext('2d');
-      const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789".split('');
+      const chars = "01ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789".split('');
       const fontSize = 14;
-      let cols = 0, drops = [];
-      let rafId = null;
+      let cols = 0, drops = [], raf=null;
 
       function resizeCanvas(){
         const dpr = window.devicePixelRatio || 1;
@@ -347,16 +388,16 @@
         canvas.height = Math.max(120, Math.floor(canvas.clientHeight * dpr));
         ctx.setTransform(dpr,0,0,dpr,0,0);
         cols = Math.floor(canvas.clientWidth / fontSize) || 1;
-        drops = Array.from({length:cols}, ()=>Math.random()*-20);
+        drops = Array.from({length: cols}, ()=>Math.random()*-20);
       }
 
       function draw(){
-        ctx.fillStyle = 'rgba(0,0,0,0.06)';
+        ctx.fillStyle = 'rgba(0,0,0,0.07)';
         ctx.fillRect(0,0,canvas.width,canvas.height);
         ctx.fillStyle = '#10b981';
         ctx.font = fontSize + 'px monospace';
         for(let i=0;i<cols;i++){
-          const text = letters[Math.floor(Math.random()*letters.length)];
+          const text = chars[Math.floor(Math.random()*chars.length)];
           const x = i*fontSize;
           const y = drops[i]*fontSize;
           ctx.globalAlpha = 0.9 - Math.random()*0.6;
@@ -365,24 +406,24 @@
           drops[i]++;
         }
         ctx.globalAlpha = 1;
-        rafId = requestAnimationFrame(draw);
+        raf = requestAnimationFrame(draw);
       }
 
-      let resizeTimer;
-      window.addEventListener('resize', ()=>{ clearTimeout(resizeTimer); resizeTimer = setTimeout(()=>{ cancelAnimationFrame(rafId); resizeCanvas(); draw(); }, 150); });
+      let t;
+      window.addEventListener('resize', ()=>{ clearTimeout(t); t=setTimeout(()=>{ cancelAnimationFrame(raf); resizeCanvas(); draw(); }, 120); });
       resizeCanvas();
       draw();
     })();
   </script>
 
+  <script src="https://cdn.jsdelivr.net/gh/VincentGarreau/particles.js@2.0.0/particles.min.js" defer></script>
   <script>
-    // particles.js safe init
     function initParticles(){
       try{
         if(window.particlesJS){
           particlesJS('particles-js', {
             particles: {
-              number: { value: 36 },
+              number: { value: 32 },
               color: { value: ['#06b6d4','#10b981'] },
               shape: { type: 'circle' },
               opacity: { value: 0.28 },
@@ -394,11 +435,10 @@
           });
         }
       }catch(e){
-        // si échec, on ignore (CDN can fail)
         console.warn('particles init failed', e);
       }
     }
-    window.addEventListener('load', ()=>setTimeout(initParticles,300));
+    window.addEventListener('load', ()=>setTimeout(initParticles, 300));
   </script>
 
   <script>
@@ -425,7 +465,6 @@
         console.warn('GitHub stats error', err);
       }
     }
-
     document.getElementById('year').textContent = new Date().getFullYear();
     window.addEventListener('load', updateGithubStats);
   </script>
