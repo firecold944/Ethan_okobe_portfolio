@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<section class="grid lg:grid-cols-2 gap-8 items-center" aria-labelledby="hero-title">
+  <div>
+    <p class="kicker">Bonjour — je suis Ethan</p>
+    <h1 id="hero-title" class="hero-title text-4xl md:text-5xl leading-tight">Développeur Python & Intelligence Artificielle</h1>
+    <p class="hero-lead mt-4">Je conçois des solutions concrètes en vision par ordinateur, traitement audio et assistants vocaux. Mes projets privilégient robustesse, ergonomie et prototypes fonctionnels (OpenCV, MediaPipe, bibliothèques audio).</p>
+
+    <div class="mt-6 flex flex-wrap gap-3">
+      <span class="pill">Vision par ordinateur</span>
+      <span class="pill">Traitement audio</span>
+      <span class="pill">CustomTkinter</span>
+      <span class="pill">TensorFlow (début)</span>
+    </div>
+
+    <div class="mt-6 flex gap-3">
+      <a class="btn-primary" href="#projet" aria-label="Voir projets">Voir projets</a>
+      <a class="btn-ghost" href="#contact" aria-label="Me contacter">Me contacter</a>
+      <a class="btn-ghost" href="/assets/Ethan_Okobe_CV.pdf" aria-label="Télécharger CV" target="_blank" rel="noopener">Télécharger CV</a>
+    </div>
+  </div>
+
+  <div class="space-y-4">
+    <div class="card matrix-container" role="img" aria-label="Animation matrix mettant en avant Python et bibliothèques">
+      <canvas id="matrixCanvas" aria-hidden="true"></canvas>
+      <div class="absolute inset-x-4 bottom-4 text-xs font-mono muted"> $ python assistant.py —speech —opencv —mediapipe —ai </div>
+    </div>
+
+    <div class="grid grid-cols-2 gap-3">
+      <a class="card p-3 flex items-center gap-3" href="ScreenRec_250911_43988.mp4" aria-label="Ouvrir la démo vidéo">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none"><rect width="24" height="24" rx="6" fill="#051426" /><path d="M9 8l6 4-6 4V8z" fill="#06b6d4"/></svg>
+        <div>
+          <div class="font-semibold">Démo vidéo</div>
+          <div class="muted text-xs">Cliquez pour lire</div>
+        </div>
+      </a>
+
+      <a class="card p-3 flex items-center gap-3" href="https://github.com/firecold944" target="_blank" rel="noopener noreferrer" aria-label="Voir le profil GitHub">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none"><rect width="24" height="24" rx="6" fill="#051426" /><path d="M12 2v6" stroke="#10b981" stroke-width="1.6" stroke-linecap="round"/></svg>
+        <div>
+          <div class="font-semibold">GitHub</div>
+          <div class="muted text-xs">Projets & contributions</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>

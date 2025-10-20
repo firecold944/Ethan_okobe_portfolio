@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ethan Okobe — Développeur Python & IA</title>
+  <link rel="stylesheet" href="styles/tailwind.css" />
+  <link rel="stylesheet" href="styles/main.css" />
+</head>
+<body class="antialiased EthanOkobe">
+  <header class="site-header">
+    <div class="container flex items-center justify-between relative">
+      <a href="#hero" class="flex items-center gap-3" aria-label="Accueil - Ethan Okobe">
+        <div class="logo-mark" aria-hidden="true">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+            <rect x="1.5" y="1.5" width="21" height="21" rx="5" stroke="rgba(255,255,255,0.03)" stroke-width="1.5" fill="transparent"/>
+            <path d="M6 15.5L10.5 10L18 16" stroke="url(#grad)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            <defs><linearGradient id="grad" x1="0" x2="1"><stop offset="0" stop-color="#06b6d4"/><stop offset="1" stop-color="#10b981"/></linearGradient></defs>
+          </svg>
+        </div>
+        <div>
+          <div class="kicker">Ethan Okobe</div>
+          <div class="muted" style="font-size:.85rem">Développeur Python · Vision & Audio</div>
+        </div>
+      </a>
+      <nav aria-label="navigation principale" class="relative">
+        <button id="navToggle" class="nav-toggle" aria-expanded="false" aria-controls="navList" title="Menu">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </button>
+        <div id="navList" class="nav-list" role="menu" aria-hidden="true">
+          <a class="btn-ghost" href="#about" role="menuitem">À propos</a>
+          <a class="btn-ghost" href="#skills" role="menuitem">Compétences</a>
+          <a class="btn-ghost" href="#projects" role="menuitem">Projets</a>
+          <a class="btn-ghost" href="#contact" role="menuitem">Contact</a>
+          <a class="btn-primary" href="https://github.com/firecold944" target="_blank" rel="noopener noreferrer" role="menuitem">GitHub</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" role="main" class="container">
+    <!-- HERO Section -->
+    <section id="hero">
+      <!-- Include hero.html -->
+      <div id="hero-content"></div>
+    </section>
+
+    <!-- ABOUT Section -->
+    <section id="about">
+      <!-- Include about.html -->
+      <div id="about-content"></div>
+    </section>
+
+    <!-- SKILLS Section -->
+    <section id="skills">
+      <!-- Include skills.html -->
+      <div id="skills-content"></div>
+    </section>
+
+    <!-- PROJECTS Section -->
+    <section id="projects">
+      <!-- Include projects.html -->
+      <div id="projects-content"></div>
+    </section>
+
+    <!-- CONTACT Section -->
+    <section id="contact">
+      <!-- Include contact.html -->
+      <div id="contact-content"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2023 Ethan Okobe. Tous droits réservés.</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -15,6 +15,8 @@
       --muted:#9aa8bb;
       --accent-1:#06b6d4;
       --accent-2:#10b981;
+      --accent-3:#d946ef;
+      --accent-4:#f59e0b;
       --glass: rgba(255,255,255,0.04);
       --card-shadow: 0 8px 30px rgba(2,6,23,0.55);
     }
@@ -32,77 +34,78 @@
       color: #E6EEF6;
       line-height:1.5;
       -webkit-tap-highlight-color: transparent;
-      -webkit-font-kerning: normal;
     }
 
     /* Header */
     .site-header{
       position:sticky; top:0; z-index:60;
       backdrop-filter: blur(6px);
-      background: linear-gradient(180deg, rgba(4,18,34,0.6), rgba(4,18,34,0.28));
+      background: linear-gradient(180deg, rgba(4,18,34,0.85), rgba(4,18,34,0.5));
       border-bottom: 1px solid rgba(255,255,255,0.03);
     }
-    .logo-mark{ width:48px; height:48px; display:inline-grid; place-items:center; border-radius:10px;
-      background: linear-gradient(135deg,#05243a,var(--bg-900)); box-shadow: 0 8px 22px rgba(2,6,23,0.6);
+    .logo-mark{ width:50px; height:50px; display:inline-grid; place-items:center; border-radius:12px;
+      background: linear-gradient(135deg,#05243a,var(--bg-900)); box-shadow: 0 8px 24px rgba(2,6,23,0.6);
     }
 
     /* Layout */
-    .container{ max-width:1100px; margin:0 auto; padding:2.25rem 1rem; }
-    .section-title{ font-size:1.25rem; font-weight:700; color:#E8FFF7; }
+    .container{ max-width:1100px; margin:0 auto; padding:2.5rem 1rem; }
+    .section-title{ font-size:1.35rem; font-weight:700; color:#E8FFF7; }
 
     /* Hero */
-    .hero-title{ font-weight:800; letter-spacing:-0.01em; color: #E8FFF7; }
-    .hero-lead{ color:var(--muted); max-width:62ch; font-size:1.05rem; }
+    .hero-title{ font-weight:900; letter-spacing:-0.015em; color: #E8FFF7; }
+    .hero-lead{ color:var(--muted); max-width:65ch; font-size:1.08rem; }
 
     /* Cards */
     .card{
-      background: linear-gradient(180deg, rgba(255,255,255,0.018), rgba(255,255,255,0.01));
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
       border: 1px solid var(--glass);
-      border-radius: 14px;
+      border-radius: 16px;
       box-shadow: var(--card-shadow);
       transition: transform .28s cubic-bezier(.2,.9,.2,1), box-shadow .28s, border-color .28s;
     }
     .card:hover, .card:focus-within{
-      transform: translateY(-8px);
-      box-shadow: 0 24px 48px rgba(2,6,23,0.6), 0 0 32px rgba(6,182,212,0.06);
-      border-color: rgba(6,182,212,0.12);
+      transform: translateY(-10px);
+      box-shadow: 0 28px 60px rgba(2,6,23,0.6), 0 0 32px rgba(6,182,212,0.08);
+      border-color: rgba(6,182,212,0.15);
     }
 
     /* Pills */
     .pill{
       display:inline-flex; align-items:center; gap:8px;
-      padding:.28rem .6rem; border-radius:999px; font-weight:600; font-size:.82rem;
+      padding:.32rem .7rem; border-radius:999px; font-weight:600; font-size:.85rem;
       background: rgba(255,255,255,0.02); color:var(--muted); border:1px solid rgba(255,255,255,0.02);
+      transition: all 0.3s;
     }
+    .pill:hover{ background: var(--accent-1); color:#fff; border-color: var(--accent-1); }
 
     /* Buttons */
     .btn-primary{
       display:inline-flex; align-items:center; gap:.6rem;
       background: linear-gradient(90deg,var(--accent-2),var(--accent-1));
-      color:#03151a; font-weight:700; padding:.58rem .95rem; border-radius:10px;
-      box-shadow: 0 12px 30px rgba(16,185,129,0.12); border: none; cursor:pointer;
+      color:#03151a; font-weight:700; padding:.6rem 1rem; border-radius:12px;
+      box-shadow: 0 14px 32px rgba(16,185,129,0.12); border: none; cursor:pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
     }
-    .btn-primary:focus{ outline:3px solid rgba(16,185,129,0.12); outline-offset:3px; }
+    .btn-primary:hover{ transform: translateY(-3px); box-shadow: 0 20px 38px rgba(16,185,129,0.2); }
     .btn-ghost{
-      background:transparent; color:var(--muted); border:1px solid rgba(255,255,255,0.04); padding:.5rem .85rem; border-radius:10px;
+      background:transparent; color:var(--muted); border:1px solid rgba(255,255,255,0.04); padding:.55rem .9rem; border-radius:12px;
     }
 
     /* Matrix */
-    .matrix-container{ position:relative; overflow:hidden; border-radius:12px; min-height:220px; padding:0; background: linear-gradient(180deg, rgba(2,6,23,0.45), rgba(2,6,23,0.22)); border:1px solid rgba(255,255,255,0.02); }
-    #matrixCanvas{ width:100%; height:100%; display:block; }
+    .matrix-container{ position:relative; overflow:hidden; border-radius:14px; min-height:240px; background: linear-gradient(180deg, rgba(2,6,23,0.45), rgba(2,6,23,0.22)); border:1px solid rgba(255,255,255,0.02); }
 
-    /* Nav mobile */
+    /* Mobile nav */
     .nav-toggle{ display:none; }
     .nav-list{ display:flex; gap:0.5rem; align-items:center; }
     @media (max-width:960px){
-      .nav-list{ display:none; position:absolute; right:1rem; top:64px; background:linear-gradient(180deg, rgba(4,18,34,0.95), rgba(4,18,34,0.9)); padding:.5rem; border-radius:10px; box-shadow:0 12px 30px rgba(2,6,23,0.6);}
-      .nav-list.open{ display:flex; flex-direction:column; width:210px; gap:.5rem; }
-      .nav-toggle{ display:inline-flex; background:transparent; border:1px solid rgba(255,255,255,0.04); padding:.4rem .6rem; border-radius:8px; color:var(--muted); }
+      .nav-list{ display:none; position:absolute; right:1rem; top:64px; background:linear-gradient(180deg, rgba(4,18,34,0.95), rgba(4,18,34,0.9)); padding:.6rem; border-radius:12px; box-shadow:0 12px 32px rgba(2,6,23,0.6);}
+      .nav-list.open{ display:flex; flex-direction:column; width:220px; gap:.6rem; }
+      .nav-toggle{ display:inline-flex; background:transparent; border:1px solid rgba(255,255,255,0.04); padding:.45rem .65rem; border-radius:10px; color:var(--muted); }
     }
 
-    /* Progress bar in skills */
-    .progress-bar{ height:8px; background:rgba(255,255,255,0.03); border-radius:999px; overflow:hidden; }
-    .progress{ height:100%; border-radius:999px; transition: width .7s cubic-bezier(.2,.9,.2,1); }
+    /* Progress bars */
+    .progress-bar{ height:10px; background:rgba(255,255,255,0.03); border-radius:999px; overflow:hidden; }
+    .progress{ height:100%; border-radius:999px; transition: width .8s cubic-bezier(.2,.9,.2,1); }
 
     /* Accessibility */
     .sr-only{ position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
@@ -112,18 +115,24 @@
 
     /* Utilities */
     .muted { color: var(--muted); }
-    .kicker { font-weight:700; color:var(--accent-2); font-size:.95rem; }
-    footer{ color:var(--muted); font-size:.92rem; padding:2rem 0; text-align:center; }
+    .kicker { font-weight:700; color:var(--accent-2); font-size:1rem; }
+    footer{ color:var(--muted); font-size:.93rem; padding:2.5rem 0; text-align:center; }
 
     @media (max-width:640px){
-      .hero-title{ font-size:1.8rem; }
-      .container{ padding:1.1rem; }
+      .hero-title{ font-size:2rem; }
+      .container{ padding:1.2rem; }
     }
+
+    /* === EthanOkobe class for personal branding === */
+    .EthanOkobe h1, .EthanOkobe h2, .EthanOkobe h3{ color: var(--accent-2); }
+    .EthanOkobe .pill{ border-color: var(--accent-2); }
+    .EthanOkobe .btn-primary{ background: linear-gradient(90deg,var(--accent-2),var(--accent-3)); }
   </style>
 </head>
-<body class="antialiased">
+<body class="antialiased EthanOkobe">
   <a class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-[rgba(6,182,212,0.12)] text-white px-3 py-2 rounded" href="#main">Aller au contenu</a>
 
+  <!-- Header / Navigation -->
   <header class="site-header">
     <div class="container flex items-center justify-between relative">
       <a href="#main" class="flex items-center gap-3" aria-label="Accueil - Ethan Okobe">
@@ -176,21 +185,6 @@
           <a class="btn-ghost" href="#contact" aria-label="Me contacter">Me contacter</a>
           <a class="btn-ghost" href="/assets/Ethan_Okobe_CV.pdf" aria-label="Télécharger CV" target="_blank" rel="noopener">Télécharger CV</a>
         </div>
-
-        <dl class="mt-6 grid grid-cols-3 gap-4 text-sm">
-          <div>
-            <dt class="muted">Débuts</dt>
-            <dd class="font-semibold">Codage à 13 ans</dd>
-          </div>
-          <div>
-            <dt class="muted">Langage</dt>
-            <dd class="font-semibold">Python</dd>
-          </div>
-          <div>
-            <dt class="muted">Outils</dt>
-            <dd class="font-semibold">OpenCV · MediaPipe</dd>
-          </div>
-        </dl>
       </div>
 
       <div class="space-y-4">
@@ -218,255 +212,6 @@
         </div>
       </div>
     </section>
-
-    <!-- ABOUT -->
-    <section id="about" class="mt-12" aria-labelledby="about-title">
-      <div class="flex gap-6 items-start">
-        <h2 id="about-title" class="section-title">À propos</h2>
-        <div class="card p-6">
-          <h3 class="text-lg font-semibold">L’histoire d’Ethan Okobe Kemuel</h3>
-          <p class="muted mt-3">Je m’appelle Ethan Okobe Kemuel. Passionné d'intelligence artificielle, robotique et développement logiciel — j'ai grandi entouré par la technologie (mon père travaille en bases de données, mon frère étudie l'informatique).</p>
-          <p class="muted mt-3">J'ai commencé à coder à 13 ans (HTML), puis à 14 ans Python est devenu mon langage principal. J'apprends par la pratique : prototypage, tests et itérations rapides. J'aime combiner créativité et rigueur pour produire des prototypes fonctionnels.</p>
-          <p class="muted mt-3">Mes travaux se concentrent sur la vision par ordinateur, le traitement audio et les assistants vocaux. Retrouve mes projets sur GitHub — je suis disponible pour collaborations techniques et éducatives.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- SKILLS -->
-    <section id="skills" class="mt-12" aria-labelledby="skills-title">
-      <h2 id="skills-title" class="section-title mb-4">Compétences principales</h2>
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        <article class="card p-4" aria-labelledby="skill-python">
-          <h3 id="skill-python" class="font-semibold">🐍 Python</h3>
-          <p class="muted text-sm mt-2">Scripts, automatisation, structure de projet, bonnes pratiques.</p>
-          <div class="mt-3 progress-bar"><div class="progress" style="width:66%; background:linear-gradient(90deg,var(--accent-2),var(--accent-1));"></div></div>
-        </article>
-
-        <article class="card p-4" aria-labelledby="skill-opencv">
-          <h3 id="skill-opencv" class="font-semibold">📷 OpenCV</h3>
-          <p class="muted text-sm mt-2">Traitement d'images et pipelines temps réel.</p>
-          <div class="mt-3 progress-bar"><div class="progress" style="width:78%; background:var(--accent-1);"></div></div>
-        </article>
-
-        <article class="card p-4" aria-labelledby="skill-mediapipe">
-          <h3 id="skill-mediapipe" class="font-semibold">🕹 MediaPipe</h3>
-          <p class="muted text-sm mt-2">Détection de pose/main/visage en temps réel.</p>
-          <div class="mt-3 progress-bar"><div class="progress" style="width:72%; background:#d946ef;"></div></div>
-        </article>
-
-        <article class="card p-4" aria-labelledby="skill-audio">
-          <h3 id="skill-audio" class="font-semibold">🗣 Traitement audio</h3>
-          <p class="muted text-sm mt-2">SpeechRecognition, gTTS, pré-traitement audio.</p>
-          <div class="mt-3 progress-bar"><div class="progress" style="width:80%; background:#f59e0b;"></div></div>
-        </article>
-
-        <article class="card p-4" aria-labelledby="skill-ds">
-          <h3 id="skill-ds" class="font-semibold">📊 Data Science</h3>
-          <p class="muted text-sm mt-2">pandas, NumPy, visualisations.</p>
-          <div class="mt-3 progress-bar"><div class="progress" style="width:64%; background:#8b5cf6;"></div></div>
-        </article>
-
-        <article class="card p-4" aria-labelledby="skill-ctk">
-          <h3 id="skill-ctk" class="font-semibold">🖼️ CustomTkinter</h3>
-          <p class="muted text-sm mt-2">Interfaces desktop modernes et ergonomiques.</p>
-          <div class="mt-3 progress-bar"><div class="progress" style="width:76%; background:#3b82f6;"></div></div>
-        </article>
-      </div>
-    </section>
-
-    <!-- PROJECTS -->
-    <section id="projet" class="mt-12" aria-labelledby="projects-title">
-      <h2 id="projects-title" class="section-title mb-4">Projets phares</h2>
-      <div class="grid gap-4">
-        <article class="card p-6" aria-labelledby="proj-voice">
-          <h3 id="proj-voice" class="text-lg font-semibold flex items-center gap-3">🎤 Assistant Vocal IA (Desktop)</h3>
-          <p class="muted mt-2">Assistant vocal Python avec reconnaissance vocale, synthèse gTTS et interface CustomTkinter. Prototype stable pour démonstration et usage local.</p>
-          <div class="mt-4 flex flex-wrap gap-2">
-            <span class="pill">Python</span><span class="pill">SpeechRecognition</span><span class="pill">gTTS</span><span class="pill">CustomTkinter</span>
-          </div>
-          <div class="mt-4 flex gap-3">
-            <a class="btn-primary" href="https://github.com/firecold944/project-controle-vocal" target="_blank" rel="noopener">Voir le repo</a>
-            <a class="btn-ghost" href="https://github.com/firecold944/project-controle-vocal#readme" target="_blank" rel="noopener">Documentation</a>
-          </div>
-        </article>
-
-        <article class="card p-6" aria-labelledby="proj-gtts">
-          <h3 id="proj-gtts" class="text-lg font-semibold flex items-center gap-3">🎤 Assistant gTTS (Simplifié)</h3>
-          <p class="muted mt-2">Prototype léger orienté démonstration pédagogique.</p>
-          <div class="mt-4 flex gap-3">
-            <a class="btn-primary" href="https://github.com/firecold944/assistant-vocal-gTTs/tree/main" target="_blank" rel="noopener">Voir le repo</a>
-            <a class="btn-ghost" href="https://github.com/firecold944/assistant-vocal-gTTs/tree/main#readme" target="_blank" rel="noopener">Documentation</a>
-          </div>
-        </article>
-
-        <article class="card p-6" aria-labelledby="proj-hand">
-          <h3 id="proj-hand" class="text-lg font-semibold flex items-center gap-3">✍️ Handwriting Recognition</h3>
-          <p class="muted mt-2">Pipeline de reconnaissance d’écriture manuscrite avec pré-traitement OpenCV et entraînement.</p>
-          <div class="mt-4 flex gap-3">
-            <a class="btn-primary" href="https://github.com/firecold944/handswritting_model" target="_blank" rel="noopener">Voir le repo</a>
-            <a class="btn-ghost" href="https://github.com/firecold944/handswritting_model#readme" target="_blank" rel="noopener">Documentation</a>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact" class="mt-12 grid lg:grid-cols-2 gap-6" aria-labelledby="contact-title">
-      <div class="card p-6">
-        <h3 id="contact-title" class="text-lg font-semibold">Discutons de votre projet</h3>
-        <p class="muted mt-2">Disponible pour collaborations techniques et projets éducatifs. Contact principal : email.</p>
-        <div class="mt-4 flex gap-3 flex-wrap">
-          <a class="btn-primary" href="mailto:ethanokobe944@gmail.com">Envoyer un email</a>
-          <a class="btn-ghost" href="https://github.com/firecold944" target="_blank" rel="noopener">GitHub</a>
-        </div>
-      </div>
-
-      <div class="card p-6" aria-labelledby="github-stats">
-        <h3 id="github-stats" class="text-lg font-semibold">Statistiques GitHub</h3>
-        <div class="grid grid-cols-2 gap-4 mt-4 text-center">
-          <div class="p-3 bg-[rgba(255,255,255,0.02)] rounded">
-            <div id="github-repos" class="text-2xl font-bold text-[var(--accent-2)]">—</div>
-            <div class="muted text-xs">Dépôts</div>
-          </div>
-          <div class="p-3 bg-[rgba(255,255,255,0.02)] rounded">
-            <div id="github-stars" class="text-2xl font-bold text-[var(--accent-1)]">—</div>
-            <div class="muted text-xs">Étoiles</div>
-          </div>
-          <div class="p-3 bg-[rgba(255,255,255,0.02)] rounded">
-            <div id="github-commits" class="text-2xl font-bold text-[#a78bfa]">—</div>
-            <div class="muted text-xs">Gists</div>
-          </div>
-          <div class="p-3 bg-[rgba(255,255,255,0.02)] rounded">
-            <div id="github-contributions" class="text-2xl font-bold text-[#f59e0b]">—</div>
-            <div class="muted text-xs">Followers</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <footer class="mt-12">
-      <div class="max-w-3xl mx-auto muted">© <span id="year"></span> Ethan — Python, Vision & Audio · <a href="https://github.com/firecold944" class="text-[var(--accent-2)]">GitHub</a></div>
-    </footer>
   </main>
-
-  <!-- Scripts: matrix, particles, nav, github -->
-  <script>
-    // Mobile nav toggle
-    (function(){
-      const toggle = document.getElementById('navToggle');
-      const list = document.getElementById('navList');
-      toggle && toggle.addEventListener('click', ()=>{
-        const open = list.classList.toggle('open');
-        list.setAttribute('aria-hidden', open ? 'false' : 'true');
-        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-      });
-      // close on outside click
-      document.addEventListener('click', (e)=>{
-        if(!list || !toggle) return;
-        if(!list.contains(e.target) && !toggle.contains(e.target)) {
-          list.classList.remove('open');
-          list.setAttribute('aria-hidden','true');
-          toggle.setAttribute('aria-expanded','false');
-        }
-      });
-    })();
-  </script>
-
-  <script>
-    // Matrix canvas (optimized)
-    (function(){
-      const canvas = document.getElementById('matrixCanvas');
-      if(!canvas) return;
-      const ctx = canvas.getContext('2d');
-      const chars = "01ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789".split('');
-      const fontSize = 14;
-      let cols = 0, drops = [], raf=null;
-
-      function resizeCanvas(){
-        const dpr = window.devicePixelRatio || 1;
-        canvas.width = Math.max(300, Math.floor(canvas.clientWidth * dpr));
-        canvas.height = Math.max(120, Math.floor(canvas.clientHeight * dpr));
-        ctx.setTransform(dpr,0,0,dpr,0,0);
-        cols = Math.floor(canvas.clientWidth / fontSize) || 1;
-        drops = Array.from({length: cols}, ()=>Math.random()*-20);
-      }
-
-      function draw(){
-        ctx.fillStyle = 'rgba(0,0,0,0.07)';
-        ctx.fillRect(0,0,canvas.width,canvas.height);
-        ctx.fillStyle = '#10b981';
-        ctx.font = fontSize + 'px monospace';
-        for(let i=0;i<cols;i++){
-          const text = chars[Math.floor(Math.random()*chars.length)];
-          const x = i*fontSize;
-          const y = drops[i]*fontSize;
-          ctx.globalAlpha = 0.9 - Math.random()*0.6;
-          ctx.fillText(text, x, y);
-          if(y > canvas.clientHeight && Math.random() > 0.985) drops[i] = 0;
-          drops[i]++;
-        }
-        ctx.globalAlpha = 1;
-        raf = requestAnimationFrame(draw);
-      }
-
-      let t;
-      window.addEventListener('resize', ()=>{ clearTimeout(t); t=setTimeout(()=>{ cancelAnimationFrame(raf); resizeCanvas(); draw(); }, 120); });
-      resizeCanvas();
-      draw();
-    })();
-  </script>
-
-  <script src="https://cdn.jsdelivr.net/gh/VincentGarreau/particles.js@2.0.0/particles.min.js" defer></script>
-  <script>
-    function initParticles(){
-      try{
-        if(window.particlesJS){
-          particlesJS('particles-js', {
-            particles: {
-              number: { value: 32 },
-              color: { value: ['#06b6d4','#10b981'] },
-              shape: { type: 'circle' },
-              opacity: { value: 0.28 },
-              size: { value: 2.6 },
-              line_linked: { enable: true, distance: 110, color: '#06b6d4', opacity: 0.06, width: 1 }
-            },
-            interactivity: { detect_on: 'canvas', events: { onhover: { enable: true, mode: 'grab' }, onclick: { enable: true, mode: 'push' } }, modes: { grab:{ distance:120 } } },
-            retina_detect: true
-          });
-        }
-      }catch(e){
-        console.warn('particles init failed', e);
-      }
-    }
-    window.addEventListener('load', ()=>setTimeout(initParticles, 300));
-  </script>
-
-  <script>
-    // GitHub stats (graceful)
-    async function updateGithubStats(){
-      const username = 'firecold944';
-      const ids = ['github-repos','github-stars','github-commits','github-contributions'];
-      ids.forEach(id=>{ const el = document.getElementById(id); if(el) el.textContent = '—'; });
-      try{
-        const [uRes, rRes] = await Promise.all([
-          fetch(`https://api.github.com/users/${username}`),
-          fetch(`https://api.github.com/users/${username}/repos?per_page=100`)
-        ]);
-        if(!uRes.ok) throw new Error('user fetch failed');
-        const u = await uRes.json();
-        const repos = rRes.ok ? await rRes.json() : [];
-        const stars = Array.isArray(repos) ? repos.reduce((s,r)=>s + (r.stargazers_count||0), 0) : '—';
-
-        document.getElementById('github-repos').textContent = u.public_repos ?? '—';
-        document.getElementById('github-stars').textContent = stars ?? '—';
-        document.getElementById('github-commits').textContent = u.public_gists ?? '—';
-        document.getElementById('github-contributions').textContent = u.followers ?? '—';
-      }catch(err){
-        console.warn('GitHub stats error', err);
-      }
-    }
-    document.getElementById('year').textContent = new Date().getFullYear();
-    window.addEventListener('load', updateGithubStats);
-  </script>
 </body>
 </html>
